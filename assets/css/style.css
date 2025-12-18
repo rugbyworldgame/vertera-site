@@ -13,20 +13,18 @@ html {
 :root {
   --bg-main: #071815;
   --bg-deep: #050f0d;
-  --bg-surface: rgba(18, 55, 48, 0.55);
-  --bg-glass: rgba(10, 40, 35, 0.55);
 
   --text-main: #e6f5f1;
   --text-secondary: #b6d6cf;
 
   --accent-main: #2fae96;
-  --accent-soft: rgba(90, 220, 190, 0.25);
+  --accent-glow: rgba(120, 255, 220, 0.18);
 
   --border-soft: rgba(255, 255, 255, 0.08);
 }
 
 /* =========================================
-   Body & typography
+   Body
    ========================================= */
 
 body {
@@ -35,9 +33,9 @@ body {
     Roboto, Arial, sans-serif;
   background:
     radial-gradient(
-      1200px 800px at 50% -10%,
-      rgba(40, 150, 130, 0.18),
-      transparent 60%
+      1200px 700px at 50% -12%,
+      rgba(40, 150, 130, 0.16),
+      transparent 65%
     ),
     linear-gradient(
       to bottom,
@@ -52,7 +50,7 @@ body {
    Typography
    ========================================= */
 
-h1, h2, h3, h4 {
+h1, h2, h3 {
   margin: 0 0 0.7em;
   font-weight: 500;
   letter-spacing: 0.01em;
@@ -83,10 +81,10 @@ p {
   z-index: 200;
   background: linear-gradient(
     to bottom,
-    rgba(12, 40, 35, 0.85),
-    rgba(12, 40, 35, 0.55)
+    rgba(10, 34, 30, 0.9),
+    rgba(10, 34, 30, 0.6)
   );
-  backdrop-filter: blur(16px) saturate(120%);
+  backdrop-filter: blur(14px) saturate(120%);
   border-bottom: 1px solid var(--border-soft);
 }
 
@@ -123,7 +121,7 @@ p {
 
 .main-nav a:hover {
   color: #eafff8;
-  text-shadow: 0 0 8px rgba(140, 255, 225, 0.35);
+  text-shadow: 0 0 10px rgba(120, 255, 220, 0.25);
 }
 
 /* =========================================
@@ -134,39 +132,23 @@ p {
   display: none;
   width: 32px;
   height: 24px;
-  padding: 0;
   background: none;
   border: none;
   cursor: pointer;
   position: relative;
-  z-index: 210;
 }
 
 .burger span {
   position: absolute;
-  left: 0;
   width: 100%;
   height: 2px;
   background: #eafff8;
   border-radius: 2px;
-  transition: transform 0.25s ease, opacity 0.25s ease;
 }
 
 .burger span:nth-child(1) { top: 0; }
 .burger span:nth-child(2) { top: 11px; }
 .burger span:nth-child(3) { bottom: 0; }
-
-.burger.active span:nth-child(1) {
-  transform: translateY(11px) rotate(45deg);
-}
-
-.burger.active span:nth-child(2) {
-  opacity: 0;
-}
-
-.burger.active span:nth-child(3) {
-  transform: translateY(-11px) rotate(-45deg);
-}
 
 /* =========================================
    Hero
@@ -183,14 +165,9 @@ p {
   inset: 0;
   background:
     radial-gradient(
-      900px 500px at 20% 10%,
+      900px 500px at 25% 12%,
       rgba(60, 190, 165, 0.22),
       transparent 65%
-    ),
-    radial-gradient(
-      800px 500px at 80% 20%,
-      rgba(20, 90, 80, 0.35),
-      transparent 70%
     );
   pointer-events: none;
 }
@@ -207,20 +184,17 @@ p {
 .hero-actions {
   display: flex;
   gap: 18px;
-  flex-wrap: wrap;
   margin-top: 28px;
+  flex-wrap: wrap;
 }
 
 .btn {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
   padding: 14px 28px;
   border-radius: 999px;
   font-size: 0.95rem;
   font-weight: 500;
   text-decoration: none;
-  transition: background 0.25s ease, box-shadow 0.25s ease, transform 0.15s ease;
+  transition: transform 0.2s ease, box-shadow 0.25s ease;
 }
 
 .btn-primary {
@@ -231,17 +205,13 @@ p {
 
 .btn-primary:hover {
   transform: translateY(-1px);
-  box-shadow: 0 16px 42px rgba(50, 200, 170, 0.45);
+  box-shadow: 0 18px 44px rgba(50, 200, 170, 0.45);
 }
 
 .btn-secondary {
   background: rgba(255, 255, 255, 0.06);
   color: #d2ebe5;
   border: 1px solid var(--border-soft);
-}
-
-.btn-secondary:hover {
-  background: rgba(255, 255, 255, 0.1);
 }
 
 /* =========================================
@@ -259,23 +229,35 @@ p {
   background:
     linear-gradient(
       180deg,
-      rgba(28, 95, 82, 0.55),
-      rgba(14, 45, 40, 0.75)
+      rgba(30, 105, 92, 0.55),
+      rgba(12, 40, 36, 0.85)
     );
-  border-radius: 20px;
-  padding: 28px 26px;
+  border-radius: 22px;
+  padding: 30px 28px;
   border: 1px solid var(--border-soft);
   box-shadow:
-    0 16px 40px rgba(0, 0, 0, 0.45),
+    0 20px 50px rgba(0, 0, 0, 0.5),
     inset 0 1px 0 rgba(255, 255, 255, 0.05);
-  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  transition:
+    transform 0.35s ease,
+    box-shadow 0.35s ease,
+    background 0.35s ease;
 }
 
-.product-card:hover {
-  transform: translateY(-6px);
-  box-shadow:
-    0 24px 60px rgba(0, 0, 0, 0.55),
-    0 0 0 1px rgba(120, 255, 220, 0.18);
+/* Hover — только desktop */
+@media (hover: hover) {
+  .product-card:hover {
+    transform: translateY(-8px);
+    background:
+      linear-gradient(
+        180deg,
+        rgba(40, 140, 120, 0.65),
+        rgba(14, 50, 44, 0.9)
+      );
+    box-shadow:
+      0 30px 70px rgba(0, 0, 0, 0.6),
+      0 0 0 1px var(--accent-glow);
+  }
 }
 
 .product-title {
@@ -301,50 +283,6 @@ p {
   }
 
   .main-nav {
-    position: fixed;
-    top: 0;
-    right: 0;
-    width: 80%;
-    max-width: 320px;
-    height: 100vh;
-    background: linear-gradient(
-      to bottom,
-      rgba(14, 50, 44, 0.96),
-      rgba(8, 28, 25, 0.98)
-    );
-    display: flex;
-    flex-direction: column;
-    padding: 96px 24px;
-    gap: 22px;
-    transform: translateX(100%);
-    transition: transform 0.3s ease;
-    z-index: 205;
+    display: none;
   }
-
-  .main-nav.active {
-    transform: translateX(0);
-  }
-}
-
-/* =========================================
-   Overlay + body lock
-   ========================================= */
-
-.menu-overlay {
-  position: fixed;
-  inset: 0;
-  background: rgba(0, 0, 0, 0.6);
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity 0.3s ease;
-  z-index: 204;
-}
-
-.menu-overlay.active {
-  opacity: 1;
-  pointer-events: auto;
-}
-
-body.menu-open {
-  overflow: hidden;
 }
