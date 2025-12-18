@@ -1,0 +1,38 @@
+/* Vertera — base styles */
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 16px;
+}
+
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+    Roboto, Arial, sans-serif;
+  background: var(--bg-main);
+  color: var(--text-main);
+  line-height: 1.6;
+}
+
+/* Typography */
+
+h1, h2, h3, h4 {
+  margin: 0 0 0.6em;
+  font-weight: 500;
+}
+
+p {
+  margin: 0 0 1em;
+  color: var(--text-secondary);
+}
+
+/* Layout helper */
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
