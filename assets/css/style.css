@@ -88,7 +88,7 @@ p {
 }
 
 /* =========================
-   Burger
+   Burger (stable)
    ========================= */
 
 .burger {
@@ -99,18 +99,48 @@ p {
   background: none;
   border: none;
   cursor: pointer;
+  position: relative;
+}
+
+.burger:focus,
+.burger:active {
+  outline: none;
 }
 
 .burger span {
-  display: block;
+  position: absolute;
+  left: 0;
   width: 100%;
   height: 2px;
   background: var(--text-main);
   border-radius: 2px;
+  transition: transform 0.25s ease, opacity 0.25s ease;
 }
 
-.burger span + span {
-  margin-top: 6px;
+/* three lines */
+.burger span:nth-child(1) {
+  top: 0;
+}
+
+.burger span:nth-child(2) {
+  top: 11px;
+}
+
+.burger span:nth-child(3) {
+  bottom: 0;
+}
+
+/* active = cross */
+.burger.active span:nth-child(1) {
+  transform: translateY(11px) rotate(45deg);
+}
+
+.burger.active span:nth-child(2) {
+  opacity: 0;
+}
+
+.burger.active span:nth-child(3) {
+  transform: translateY(-11px) rotate(-45deg);
 }
 
 /* =========================
@@ -188,66 +218,12 @@ p {
   padding: 90px 0;
 }
 
-.section-intro {
-  max-width: 720px;
-  margin-bottom: 48px;
-}
-
-/* =========================
-   Products grid
-   ========================= */
-
-.products-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 28px;
-}
-
-.product-card {
-  background: var(--bg-glass);
-  border: 1px solid var(--border-soft);
-  border-radius: 18px;
-  padding: 26px;
-  backdrop-filter: blur(10px);
-  transition: transform 0.25s ease, box-shadow 0.25s ease;
-}
-
-.product-card:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.35);
-}
-
-.product-image {
-  height: 140px;
-  border-radius: 14px;
-  background: linear-gradient(
-    135deg,
-    rgba(22, 120, 100, 0.35),
-    rgba(22, 120, 100, 0.1)
-  );
-  margin-bottom: 18px;
-}
-
-.product-title {
-  font-size: 1.05rem;
-  margin-bottom: 0.4em;
-}
-
-.product-desc {
-  font-size: 0.9rem;
-}
-
 /* =========================
    Mobile
    ========================= */
 
-@media (max-width: 900px) {
-  .products-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
 @media (max-width: 768px) {
+
   .main-nav {
     position: absolute;
     top: 64px;
@@ -255,8 +231,8 @@ p {
     right: 0;
     background: var(--bg-surface);
     flex-direction: column;
-    padding: 20px;
-    gap: 16px;
+    padding: 24px;
+    gap: 18px;
     display: none;
   }
 
@@ -275,9 +251,5 @@ p {
   .hero-actions {
     flex-direction: column;
     align-items: flex-start;
-  }
-
-  .products-grid {
-    grid-template-columns: 1fr;
   }
 }
