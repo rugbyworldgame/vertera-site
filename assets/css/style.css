@@ -78,13 +78,20 @@ p {
 
 .main-nav a {
   text-decoration: none;
-  color: var(--text-secondary);
+  color: #cfe9e3; /* усиленный контраст */
   font-size: 0.95rem;
-  transition: color 0.2s ease;
+  font-weight: 500;
+  transition: color 0.2s ease, text-shadow 0.2s ease;
 }
 
 .main-nav a:hover {
-  color: var(--text-main);
+  color: #eafff8;
+  text-shadow: 0 0 6px rgba(180, 255, 235, 0.35);
+}
+
+.main-nav a:active {
+  color: #ffffff;
+  text-shadow: 0 0 8px rgba(200, 255, 240, 0.5);
 }
 
 /* =========================
@@ -176,7 +183,9 @@ p {
   margin-bottom: 2.2em;
 }
 
-/* Buttons */
+/* =========================
+   Buttons
+   ========================= */
 
 .hero-actions {
   display: flex;
@@ -207,6 +216,10 @@ p {
   background: transparent;
   color: var(--text-main);
   border-color: var(--border-soft);
+}
+
+.btn-secondary:hover {
+  border-color: rgba(200, 255, 240, 0.35);
 }
 
 /* =========================
@@ -245,6 +258,10 @@ p {
     z-index: 105;
   }
 
+  .main-nav a {
+    font-size: 1.05rem;
+  }
+
   .main-nav.active {
     transform: translateX(0);
   }
@@ -281,4 +298,3 @@ p {
 body.menu-open {
   overflow: hidden;
 }
-
