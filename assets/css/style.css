@@ -101,11 +101,6 @@ p {
   cursor: pointer;
 }
 
-.burger:focus,
-.burger:active {
-  outline: none;
-}
-
 .burger span {
   display: block;
   width: 100%;
@@ -144,7 +139,6 @@ p {
 .hero h1 {
   font-size: clamp(2.2rem, 4vw, 3.2rem);
   line-height: 1.15;
-  margin-bottom: 0.8em;
 }
 
 .hero-text {
@@ -162,9 +156,6 @@ p {
 }
 
 .btn {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
   padding: 14px 26px;
   border-radius: 999px;
   font-size: 0.95rem;
@@ -187,16 +178,74 @@ p {
   background: transparent;
   color: var(--text-main);
   border-color: var(--border-soft);
-  backdrop-filter: blur(6px);
 }
 
-.btn-secondary:hover {
-  border-color: rgba(255, 255, 255, 0.35);
+/* =========================
+   Section
+   ========================= */
+
+.section {
+  padding: 90px 0;
+}
+
+.section-intro {
+  max-width: 720px;
+  margin-bottom: 48px;
+}
+
+/* =========================
+   Products grid
+   ========================= */
+
+.products-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 28px;
+}
+
+.product-card {
+  background: var(--bg-glass);
+  border: 1px solid var(--border-soft);
+  border-radius: 18px;
+  padding: 26px;
+  backdrop-filter: blur(10px);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.product-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.35);
+}
+
+.product-image {
+  height: 140px;
+  border-radius: 14px;
+  background: linear-gradient(
+    135deg,
+    rgba(22, 120, 100, 0.35),
+    rgba(22, 120, 100, 0.1)
+  );
+  margin-bottom: 18px;
+}
+
+.product-title {
+  font-size: 1.05rem;
+  margin-bottom: 0.4em;
+}
+
+.product-desc {
+  font-size: 0.9rem;
 }
 
 /* =========================
    Mobile
    ========================= */
+
+@media (max-width: 900px) {
+  .products-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
 
 @media (max-width: 768px) {
   .main-nav {
@@ -226,5 +275,9 @@ p {
   .hero-actions {
     flex-direction: column;
     align-items: flex-start;
+  }
+
+  .products-grid {
+    grid-template-columns: 1fr;
   }
 }
