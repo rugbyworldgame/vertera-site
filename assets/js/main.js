@@ -9,11 +9,17 @@ document.addEventListener('DOMContentLoaded', () => {
 
   if (!burger || !nav) return;
 
+  // Overlay
+  const overlay = document.createElement('div');
+  overlay.className = 'menu-overlay';
+  document.body.appendChild(overlay);
+
   let isOpen = false;
 
   const openMenu = () => {
     burger.classList.add('active');
     nav.classList.add('active');
+    overlay.classList.add('active');
     body.classList.add('menu-open');
     isOpen = true;
   };
@@ -21,6 +27,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const closeMenu = () => {
     burger.classList.remove('active');
     nav.classList.remove('active');
+    overlay.classList.remove('active');
     body.classList.remove('menu-open');
     isOpen = false;
   };
@@ -29,14 +36,12 @@ document.addEventListener('DOMContentLoaded', () => {
     isOpen ? closeMenu() : openMenu();
   });
 
-  // Закрытие меню при клике на пункт
+  overlay.addEventListener('click', closeMenu);
+
   nav.querySelectorAll('a').forEach(link => {
-    link.addEventListener('click', () => {
-      closeMenu();
-    });
+    link.addEventListener('click', closeMenu);
   });
 
-  // Защита: если ресайзнули экран — меню схлопывается
   window.addEventListener('resize', () => {
     if (window.innerWidth > 768 && isOpen) {
       closeMenu();
