@@ -1,0 +1,21 @@
+/* Vertera — base theme (dark emerald) */
+
+:root {
+  /* Backgrounds */
+  --bg-main: #0b1f1c;
+  --bg-surface: #102b26;
+  --bg-glass: rgba(16, 43, 38, 0.55);
+
+  /* Text */
+  --text-main: #e6f1ee;
+  --text-secondary: #a9c4be;
+  --text-muted: #7f9e97;
+
+  /* Accent */
+  --accent: #1f6f64;
+  --accent-hover: #2a8f82;
+
+  /* Borders & effects */
+  --border-soft: rgba(230, 241, 238, 0.08);
+  --shadow-soft: 0 10px 30px rgba(0, 0, 0, 0.35);
+}
