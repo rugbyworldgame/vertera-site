@@ -1,6 +1,5 @@
 <!doctype html>
 <html lang="ru">
-
 <head>
   <meta charset="utf-8">
   <title>Vertera</title>
@@ -12,102 +11,139 @@
 
 <body>
 
-  <!-- Header -->
-  <header class="site-header">
-    <div class="container">
-      <div class="header-inner">
+<!-- ================= HEADER ================= -->
+<header class="site-header">
+  <div class="container">
+    <div class="header-inner">
 
-        <div class="brand">
-          VERTERA
-        </div>
+      <div class="brand">VERTERA</div>
 
-        <nav class="main-nav" id="mainNav">
-          <a href="#products">Продукты</a>
-          <a href="#how">Как купить</a>
-          <a href="#contacts">Контакты</a>
-        </nav>
+      <!-- Desktop navigation -->
+      <nav class="main-nav">
+        <a href="#products">Продукты</a>
+        <a href="#how">Как купить</a>
+        <a href="#contacts">Контакты</a>
+      </nav>
 
-        <!-- Burger -->
-        <button class="burger" id="burgerBtn" aria-label="Меню">
-          <span></span>
-          <span></span>
-          <span></span>
-        </button>
+      <!-- Burger -->
+      <button class="burger" id="burgerBtn" aria-label="Меню">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
 
-      </div>
     </div>
-  </header>
+  </div>
+</header>
 
-  <!-- Hero -->
-  <section class="hero">
-    <div class="container hero-inner">
-      <div class="hero-content">
-        <h1>
-          Здоровье и долголетие<br>
-          с силой морских водорослей
-        </h1>
+<!-- ================= MOBILE MENU ================= -->
+<div class="menu-overlay" id="menuOverlay"></div>
 
-        <p class="hero-text">
-          Спокойная и структурированная информация о продуктах Vertera.
-          Оформление заказа происходит на официальном сайте компании.
-        </p>
+<aside class="mobile-menu" id="mobileMenu">
+  <button class="menu-close" id="menuClose" aria-label="Закрыть меню">✕</button>
 
-        <div class="hero-actions">
-          <a href="#products" class="btn btn-primary">Смотреть продукты</a>
-          <a href="#contacts" class="btn btn-secondary">Связаться со мной</a>
-        </div>
+  <nav class="mobile-nav">
+    <a href="#products">Продукты</a>
+    <a href="#how">Как купить</a>
+    <a href="#contacts">Контакты</a>
+  </nav>
+</aside>
+
+<!-- ================= HERO ================= -->
+<section class="hero">
+  <div class="container hero-inner">
+    <div class="hero-content">
+
+      <h1>
+        Здоровье и долголетие<br>
+        с силой морских водорослей
+      </h1>
+
+      <p class="hero-text">
+        Спокойная и структурированная информация о продуктах Vertera.
+        Оформление заказа происходит на официальном сайте компании.
+      </p>
+
+      <div class="hero-actions">
+        <a href="#products" class="btn btn-primary">Смотреть продукты</a>
+        <a href="#contacts" class="btn btn-secondary">Связаться со мной</a>
       </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ================= MAIN ================= -->
+<main class="site-main">
+
+  <!-- Products -->
+  <section id="products" class="section">
+    <div class="container">
+
+      <h2>Продукты Vertera</h2>
+      <p class="section-intro">
+        Ниже представлены основные продукты на основе морских водорослей.
+        Подробная информация и оформление заказа — на официальном сайте компании.
+      </p>
+
+      <div class="products-grid">
+
+        <article class="product-card">
+          <div class="product-image"></div>
+          <h3 class="product-title">Гель для пищеварения</h3>
+          <p class="product-desc">
+            Поддержка работы ЖКТ и мягкое ежедневное использование.
+          </p>
+        </article>
+
+        <article class="product-card">
+          <div class="product-image"></div>
+          <h3 class="product-title">Детокс-комплекс</h3>
+          <p class="product-desc">
+            Комплекс на основе морских компонентов для повседневного рациона.
+          </p>
+        </article>
+
+        <article class="product-card">
+          <div class="product-image"></div>
+          <h3 class="product-title">Гель для суставов</h3>
+          <p class="product-desc">
+            Поддержка подвижности и комфорта в повседневной активности.
+          </p>
+        </article>
+
+      </div>
+
     </div>
   </section>
 
-  <!-- Main content -->
-  <main class="site-main">
+</main>
 
-    <!-- Products -->
-    <section id="products" class="section">
-      <div class="container">
+<!-- ================= JS ================= -->
+<script>
+  const burger = document.getElementById('burgerBtn');
+  const overlay = document.getElementById('menuOverlay');
+  const menu = document.getElementById('mobileMenu');
+  const closeBtn = document.getElementById('menuClose');
+  const links = document.querySelectorAll('.mobile-nav a');
 
-        <h2>Продукты Vertera</h2>
-        <p class="section-intro">
-          Ниже представлены основные продукты на основе морских водорослей.
-          Подробная информация и оформление заказа — на официальном сайте компании.
-        </p>
+  function openMenu() {
+    overlay.classList.add('open');
+    menu.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
 
-        <div class="products-grid">
+  function closeMenu() {
+    overlay.classList.remove('open');
+    menu.classList.remove('open');
+    document.body.style.overflow = '';
+  }
 
-          <article class="product-card">
-            <div class="product-image"></div>
-            <h3 class="product-title">Гель для пищеварения</h3>
-            <p class="product-desc">
-              Поддержка работы ЖКТ и мягкое ежедневное очищение.
-            </p>
-          </article>
-
-          <article class="product-card">
-            <div class="product-image"></div>
-            <h3 class="product-title">Детокс-комплекс</h3>
-            <p class="product-desc">
-              Комплексное очищение организма на основе морских компонентов.
-            </p>
-          </article>
-
-          <article class="product-card">
-            <div class="product-image"></div>
-            <h3 class="product-title">Гель для суставов</h3>
-            <p class="product-desc">
-              Поддержка подвижности и восстановление соединительных тканей.
-            </p>
-          </article>
-
-        </div>
-
-      </div>
-    </section>
-
-  </main>
-
-  <!-- JS -->
-  <script src="assets/js/main.js"></script>
+  burger.addEventListener('click', openMenu);
+  closeBtn.addEventListener('click', closeMenu);
+  overlay.addEventListener('click', closeMenu);
+  links.forEach(link => link.addEventListener('click', closeMenu));
+</script>
 
 </body>
 </html>
