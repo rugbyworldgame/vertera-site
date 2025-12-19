@@ -1,24 +1,22 @@
 /* =========================================
    VERTERA — STYLE (Vertera 3)
-   FIXED BURGER + MENU
+   Premium cards restored
    ========================================= */
 
-/* ---------- SAFE THEME FALLBACK ---------- */
+/* ---------- THEME FALLBACK ---------- */
 
 :root {
   --bg-main: #0b1f1c;
   --bg-surface: #102b26;
-  --bg-glass: rgba(16, 43, 38, 0.55);
 
   --text-main: #e6f1ee;
-  --text-secondary: #a9c4be;
-  --text-muted: #7f9e97;
+  --text-secondary: #b6d8d1;
 
   --accent: #1f6f64;
-  --accent-hover: #2a8f82;
+  --accent-soft: rgba(42,143,130,.35);
 
-  --border-soft: rgba(230, 241, 238, 0.12);
-  --shadow-soft: 0 10px 30px rgba(0, 0, 0, 0.35);
+  --border-soft: rgba(255,255,255,.14);
+  --glass-fill: rgba(255,255,255,.06);
 }
 
 /* ---------- Base ---------- */
@@ -35,7 +33,6 @@ body {
     "Segoe UI", Roboto, Arial, sans-serif;
   background: var(--bg-main);
   color: var(--text-main);
-  line-height: 1.55;
 }
 
 /* ---------- Layout ---------- */
@@ -47,232 +44,23 @@ body {
 }
 
 /* =========================================
-   Header
+   PRODUCTS — FIXED TO ORIGINAL IDEA
    ========================================= */
-
-.site-header {
-  position: sticky;
-  top: 0;
-  z-index: 200;
-  background:
-    linear-gradient(
-      to bottom,
-      rgba(255,255,255,.06),
-      rgba(255,255,255,0)
-    ),
-    linear-gradient(
-      to bottom,
-      rgba(11,31,28,.92),
-      rgba(11,31,28,.78)
-    );
-  backdrop-filter: blur(14px);
-  border-bottom: 1px solid var(--border-soft);
-}
-
-.header-inner {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  min-height: 64px;
-}
-
-.brand {
-  font-weight: 600;
-  letter-spacing: .18em;
-  font-size: .85rem;
-}
-
-/* =========================================
-   BURGER — FIXED
-   ========================================= */
-
-.burger {
-  width: 34px;
-  height: 24px;
-  position: relative;
-  background: none;
-  border: none;
-  cursor: pointer;
-}
-
-.burger span {
-  position: absolute;
-  left: 0;
-  width: 100%;
-  height: 2px;
-  background: var(--text-main);
-  border-radius: 2px;
-}
-
-.burger span:nth-child(1) {
-  top: 2px;
-}
-
-.burger span:nth-child(2) {
-  top: 11px;
-}
-
-.burger span:nth-child(3) {
-  bottom: 2px;
-}
-
-/* =========================================
-   Overlay + Mobile menu
-   ========================================= */
-
-.menu-overlay {
-  position: fixed;
-  inset: 0;
-  z-index: 300;
-  background:
-    radial-gradient(
-      circle at 30% 20%,
-      rgba(42,143,130,.18),
-      transparent 55%
-    ),
-    rgba(8,18,17,.55);
-  backdrop-filter: blur(6px);
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity .35s ease;
-}
-
-.menu-overlay.active {
-  opacity: 1;
-  pointer-events: auto;
-}
-
-.mobile-menu {
-  position: fixed;
-  top: 0;
-  right: 0;
-  z-index: 301;
-  width: 320px;
-  max-width: 85%;
-  height: 100%;
-  background:
-    linear-gradient(
-      to bottom,
-      rgba(255,255,255,.06),
-      rgba(255,255,255,0)
-    ),
-    linear-gradient(
-      to bottom,
-      var(--bg-surface),
-      var(--bg-main)
-    );
-  backdrop-filter: blur(18px);
-  box-shadow: -24px 0 60px rgba(0,0,0,.45);
-  transform: translateX(100%);
-  transition: transform .4s ease;
-  padding: 96px 28px 28px;
-}
-
-.mobile-menu.active {
-  transform: translateX(0);
-}
-
-.menu-close {
-  position: absolute;
-  top: 22px;
-  right: 22px;
-  width: 36px;
-  height: 36px;
-  border-radius: 50%;
-  border: 1px solid var(--border-soft);
-  background: rgba(255,255,255,.08);
-  color: var(--text-main);
-  font-size: 1.2rem;
-  cursor: pointer;
-}
-
-/* ---------- MOBILE NAV — FIXED ---------- */
-
-.mobile-nav {
-  display: flex;
-  flex-direction: column;
-  gap: 22px;
-  margin-top: 20px;
-}
-
-.mobile-nav a {
-  display: block;
-  font-size: 1.1rem;
-  font-weight: 500;
-  color: var(--text-main);
-  text-decoration: none;
-  padding: 10px 0;
-  border-bottom: 1px solid var(--border-soft);
-}
-
-/* =========================================
-   Hero
-   ========================================= */
-
-.hero {
-  padding: 104px 0 88px;
-  background:
-    radial-gradient(
-      circle at 20% 0%,
-      rgba(42,143,130,.22),
-      transparent 55%
-    ),
-    linear-gradient(
-      to bottom,
-      var(--bg-surface),
-      var(--bg-main)
-    );
-}
-
-.hero-actions {
-  display: flex;
-  gap: 16px;
-  margin-top: 24px;
-}
-
-/* ---------- Buttons ---------- */
-
-.btn {
-  padding: 14px 28px;
-  border-radius: 999px;
-  font-size: .9rem;
-  font-weight: 500;
-  text-decoration: none;
-}
-
-.btn-primary {
-  background: linear-gradient(
-    135deg,
-    var(--accent-hover),
-    var(--accent)
-  );
-  color: #f4fffd;
-}
-
-.btn-secondary {
-  background: rgba(255,255,255,.1);
-  border: 1px solid var(--border-soft);
-  color: var(--text-main);
-}
-
-/* =========================================
-   Products
-   ========================================= */
-
-.section {
-  padding: 76px 0 92px;
-}
 
 .products-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: 26px;
-  margin-top: 42px;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 28px;
+  margin-top: 48px;
 }
 
+/* ---------- Card ---------- */
+
 .product-card {
-  padding: 26px 24px 30px;
-  border-radius: 22px;
+  position: relative;
+  padding: 22px;
+  border-radius: 26px;
+
   background:
     linear-gradient(
       180deg,
@@ -284,6 +72,84 @@ body {
       var(--bg-surface),
       var(--bg-main)
     );
+
   border: 1px solid var(--border-soft);
-  box-shadow: var(--shadow-soft);
+  backdrop-filter: blur(16px);
+
+  box-shadow:
+    0 24px 60px rgba(0,0,0,.55),
+    inset 0 0 0 1px rgba(255,255,255,.04);
+
+  transition: transform .35s ease, box-shadow .35s ease;
+}
+
+.product-card:hover {
+  transform: translateY(-4px);
+  box-shadow:
+    0 36px 80px rgba(0,0,0,.65),
+    inset 0 0 0 1px var(--accent-soft);
+}
+
+/* ---------- Media window (IMAGE SLOT) ---------- */
+
+.product-media {
+  height: 140px;
+  border-radius: 18px;
+  margin-bottom: 20px;
+
+  background:
+    radial-gradient(
+      circle at 30% 20%,
+      rgba(42,143,130,.45),
+      transparent 60%
+    ),
+    linear-gradient(
+      135deg,
+      rgba(16,60,54,.9),
+      rgba(11,31,28,.9)
+    );
+
+  box-shadow:
+    inset 0 0 0 1px rgba(255,255,255,.18),
+    inset 0 0 30px rgba(0,0,0,.35);
+
+  position: relative;
+  overflow: hidden;
+}
+
+/* subtle underwater shimmer */
+.product-media::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(
+      120deg,
+      transparent,
+      rgba(255,255,255,.18),
+      transparent
+    );
+  opacity: .25;
+}
+
+/* ---------- Text ---------- */
+
+.product-card h3 {
+  margin: 0 0 8px;
+  font-size: 1.05rem;
+  color: var(--text-main);
+}
+
+.product-card p {
+  margin: 0;
+  font-size: .95rem;
+  color: var(--text-secondary);
+}
+
+/* ---------- Mobile ---------- */
+
+@media (max-width: 768px) {
+  .product-media {
+    height: 120px;
+  }
 }
