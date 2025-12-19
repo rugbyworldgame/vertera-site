@@ -4,10 +4,6 @@
   <meta charset="utf-8">
   <title>Vertera</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-
-  <!-- THEME FIRST -->
-  <link rel="stylesheet" href="assets/css/theme.css">
-  <!-- STYLE SECOND -->
   <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
@@ -17,19 +13,23 @@
     <div class="header-inner">
       <div class="brand">VERTERA</div>
 
-      <!-- SINGLE MENU ENTRY POINT -->
-      <button class="burger" id="burgerBtn" aria-label="Меню" aria-expanded="false">
+      <nav class="main-nav">
+        <a href="#products">Продукты</a>
+        <a href="#how">Как купить</a>
+        <a href="#contacts">Контакты</a>
+      </nav>
+
+      <button class="burger" id="burgerBtn" aria-label="Меню">
         <span></span><span></span><span></span>
       </button>
     </div>
   </div>
 </header>
 
-<div class="menu-overlay" id="menuOverlay"></div>
+<div class="menu-overlay"></div>
 
 <aside class="mobile-menu" id="mobileMenu">
-  <button class="menu-close" id="menuClose" aria-label="Закрыть меню">✕</button>
-
+  <button class="menu-close" id="menuClose">✕</button>
   <nav class="mobile-nav">
     <a href="#products">Продукты</a>
     <a href="#how">Как купить</a>
@@ -39,10 +39,7 @@
 
 <section class="hero">
   <div class="container">
-    <h1>
-      Здоровье и долголетие<br>
-      с силой морских водорослей
-    </h1>
+    <h1>Здоровье и долголетие<br>с силой морских водорослей</h1>
     <p>Спокойная и структурированная информация о продуктах Vertera.</p>
 
     <div class="hero-actions">
@@ -57,49 +54,70 @@
     <h2>Продукты Vertera</h2>
 
     <div class="products-grid">
+
+      <!-- 1 -->
       <article class="product-card">
         <h3>Гель для пищеварения</h3>
         <p>Мягкое ежедневное использование.</p>
       </article>
 
+      <!-- 2 -->
       <article class="product-card">
         <h3>Детокс-комплекс</h3>
         <p>На основе морских компонентов.</p>
       </article>
 
+      <!-- 3 -->
       <article class="product-card">
         <h3>Гель для суставов</h3>
         <p>Поддержка комфорта движений.</p>
       </article>
+
+      <!-- 4 -->
+      <article class="product-card">
+        <h3>Иммунный комплекс</h3>
+        <p>Поддержка естественных защитных функций.</p>
+      </article>
+
+      <!-- 5 -->
+      <article class="product-card">
+        <h3>Антиоксидантная формула</h3>
+        <p>Защита клеток от окислительного стресса.</p>
+      </article>
+
+      <!-- 6 -->
+      <article class="product-card">
+        <h3>Комплекс для энергии</h3>
+        <p>Поддержка тонуса и жизненной активности.</p>
+      </article>
+
     </div>
   </div>
 </section>
 
 <script>
 const burger = document.getElementById('burgerBtn');
-const overlay = document.getElementById('menuOverlay');
 const menu = document.getElementById('mobileMenu');
+const overlay = document.querySelector('.menu-overlay');
 const closeBtn = document.getElementById('menuClose');
 const links = document.querySelectorAll('.mobile-nav a');
 
 function openMenu(){
-  overlay.classList.add('active');
   menu.classList.add('active');
-  burger.setAttribute('aria-expanded', 'true');
+  overlay.classList.add('active');
   document.body.style.overflow = 'hidden';
 }
 
 function closeMenu(){
-  overlay.classList.remove('active');
   menu.classList.remove('active');
-  burger.setAttribute('aria-expanded', 'false');
+  overlay.classList.remove('active');
   document.body.style.overflow = '';
 }
 
 burger.addEventListener('click', openMenu);
 overlay.addEventListener('click', closeMenu);
 closeBtn.addEventListener('click', closeMenu);
-links.forEach(l => l.addEventListener('click', closeMenu));
+links.forEach(link => link.addEventListener('click', closeMenu));
 </script>
 
 </body>
