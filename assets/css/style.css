@@ -1,15 +1,10 @@
 /* =========================================
-   VERTERA 3.8 — Premium Quiet Confidence
-   FIX:
-   - inner glow cards (old style restored)
-   - softer border hover
-   - overlay right side lighter (+20%)
+   VERTERA 3.9 — Glass card frame (mobile+desktop)
+   ADD: glass rim like old cards
    ========================================= */
 
 * { box-sizing: border-box; }
 html { font-size: 16px; }
-
-/* ---------- Variables ---------- */
 
 :root {
   --bg-root: #050c0b;
@@ -25,6 +20,8 @@ html { font-size: 16px; }
   --accent-inner: rgba(46,159,138,.18);
 
   --border-soft: rgba(255,255,255,.06);
+  --glass-rim: rgba(255,255,255,.10);
+  --glass-rim-2: rgba(255,255,255,.05);
 }
 
 /* ---------- Base ---------- */
@@ -38,15 +35,8 @@ body {
   line-height: 1.6;
 }
 
-h1,h2,h3 {
-  margin: 0 0 .55em;
-  font-weight: 500;
-}
-
-p {
-  margin: 0 0 .85em;
-  color: var(--text-secondary);
-}
+h1,h2,h3 { margin: 0 0 .55em; font-weight: 500; }
+p { margin: 0 0 .85em; color: var(--text-secondary); }
 
 .container {
   max-width: 1200px;
@@ -159,11 +149,7 @@ p {
   padding: 110px 36px 36px;
 }
 
-.mobile-menu.open {
-  transform: translateX(0);
-}
-
-/* ---------- Close ---------- */
+.mobile-menu.open { transform: translateX(0); }
 
 .menu-close {
   position: absolute;
@@ -178,12 +164,7 @@ p {
   transition: opacity .2s ease, transform .2s ease;
 }
 
-.menu-close:hover {
-  opacity: 1;
-  transform: rotate(90deg);
-}
-
-/* ---------- Menu links ---------- */
+.menu-close:hover { opacity: 1; transform: rotate(90deg); }
 
 .mobile-nav {
   display: flex;
@@ -202,10 +183,7 @@ p {
   transition: color .25s ease, padding-left .25s ease;
 }
 
-.mobile-nav a:hover {
-  color: #bff3e7;
-  padding-left: 6px;
-}
+.mobile-nav a:hover { color: #bff3e7; padding-left: 6px; }
 
 /* ---------- Hero ---------- */
 
@@ -231,11 +209,7 @@ p {
   );
 }
 
-.hero-actions {
-  display:flex;
-  gap:18px;
-  margin-top:18px;
-}
+.hero-actions { display:flex; gap:18px; margin-top:18px; }
 
 /* ---------- Buttons ---------- */
 
@@ -282,7 +256,7 @@ p {
   );
 }
 
-/* ---------- Products (INNER GLOW RESTORED) ---------- */
+/* ---------- Products (GLASS RIM) ---------- */
 
 .products-grid {
   display:grid;
@@ -292,33 +266,63 @@ p {
 }
 
 .product-card {
+  position: relative;
   background:
-    radial-gradient(
-      140% 120% at 30% 20%,
-      rgba(46,159,138,0.14),
-      transparent 60%
-    ),
+    radial-gradient(140% 120% at 30% 20%, rgba(46,159,138,0.14), transparent 60%),
     linear-gradient(180deg,#0a1f1d,#050c0b);
-  border-radius:22px;
-  padding:26px 24px;
-  border:1px solid var(--border-soft);
+  border-radius: 26px;
+  padding: 26px 24px;
+  border: 1px solid rgba(255,255,255,.06);
   box-shadow:
     0 24px 60px rgba(0,0,0,.78),
     inset 0 1px 0 rgba(255,255,255,.04);
-  transition:
-    transform .35s ease,
-    box-shadow .35s ease,
-    border-color .35s ease;
+  transition: transform .35s ease, box-shadow .35s ease, border-color .35s ease;
+  overflow: hidden;
+}
+
+/* glass rim (outer) */
+.product-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  box-shadow:
+    inset 0 0 0 1px var(--glass-rim),
+    inset 0 0 0 2px rgba(255,255,255,.02),
+    inset 0 18px 30px rgba(255,255,255,.03);
+  opacity: .85;
+}
+
+/* glass highlight (top-left) */
+.product-card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  background:
+    radial-gradient(90% 70% at 25% 18%, rgba(255,255,255,.07), transparent 55%),
+    linear-gradient(135deg, rgba(255,255,255,.05), transparent 45%);
+  mix-blend-mode: screen;
+  opacity: .55;
 }
 
 @media (hover:hover){
   .product-card:hover{
-    transform:translateY(-8px);
-    border-color:rgba(46,159,138,.35);
+    transform: translateY(-8px);
+    border-color: rgba(46,159,138,.28);
     box-shadow:
-      inset 0 0 0 1px rgba(46,159,138,.18),
-      inset 0 0 40px rgba(46,159,138,.22),
+      inset 0 0 0 1px rgba(46,159,138,.14),
+      inset 0 0 46px rgba(46,159,138,.20),
       0 42px 110px rgba(0,0,0,.7);
+  }
+  .product-card:hover::before{
+    opacity: 1;
+    box-shadow:
+      inset 0 0 0 1px rgba(255,255,255,.12),
+      inset 0 0 0 2px rgba(46,159,138,.06),
+      inset 0 20px 32px rgba(255,255,255,.04);
   }
 }
 
