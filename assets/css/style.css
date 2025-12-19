@@ -1,6 +1,6 @@
 /* =========================================
-   Vertera — Premium Scene Styles (Vertera 2)
-   Mobile-first depth tuning
+   VERTERA 3.0 — Premium Quiet Scene
+   Dark glass, weight, calm confidence
    ========================================= */
 
 * {
@@ -12,16 +12,20 @@ html {
 }
 
 :root {
-  --bg-hero-top: #0b2a26;
-  --bg-hero-bottom: #050f0d;
-  --bg-content: #071815;
+  /* Base surfaces */
+  --bg-root: #050c0b;
+  --bg-hero: #071312;
+  --bg-content: #050c0b;
 
-  --text-main: #e6f5f1;
-  --text-secondary: #b6d6cf;
+  /* Text */
+  --text-main: #e9f4f1;
+  --text-secondary: #a9c7c1;
 
-  --accent-main: #2fae96;
-  --accent-glow: rgba(90, 200, 180, 0.25);
+  /* Accent (very restrained) */
+  --accent: #2e9f8a;
+  --accent-dim: rgba(46, 159, 138, 0.18);
 
+  /* Borders */
   --border-soft: rgba(255, 255, 255, 0.06);
 }
 
@@ -33,7 +37,7 @@ body {
   margin: 0;
   font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
     Roboto, Arial, sans-serif;
-  background: var(--bg-content);
+  background: var(--bg-root);
   color: var(--text-main);
   line-height: 1.6;
 }
@@ -43,13 +47,13 @@ body {
    ========================================= */
 
 h1, h2, h3 {
-  margin: 0 0 0.6em;
+  margin: 0 0 0.55em;
   font-weight: 500;
   letter-spacing: 0.01em;
 }
 
 p {
-  margin: 0 0 0.9em;
+  margin: 0 0 0.85em;
   color: var(--text-secondary);
 }
 
@@ -73,10 +77,10 @@ p {
   z-index: 300;
   background: linear-gradient(
     to bottom,
-    rgba(6, 28, 24, 0.9),
-    rgba(6, 28, 24, 0.65)
+    rgba(6, 18, 17, 0.92),
+    rgba(6, 18, 17, 0.72)
   );
-  backdrop-filter: blur(14px) saturate(120%);
+  backdrop-filter: blur(12px);
   border-bottom: 1px solid var(--border-soft);
 }
 
@@ -84,14 +88,14 @@ p {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  min-height: 60px;
+  min-height: 58px;
 }
 
 .brand {
   font-weight: 600;
-  letter-spacing: 0.12em;
-  font-size: 0.9rem;
-  color: #eafff8;
+  letter-spacing: 0.14em;
+  font-size: 0.85rem;
+  color: #eaf7f4;
 }
 
 /* =========================================
@@ -105,8 +109,8 @@ p {
 
 .main-nav a {
   text-decoration: none;
-  color: #cfe9e3;
-  font-size: 0.95rem;
+  color: #c8e1db;
+  font-size: 0.9rem;
   font-weight: 500;
 }
 
@@ -116,8 +120,8 @@ p {
 
 .burger {
   display: none;
-  width: 30px;
-  height: 22px;
+  width: 28px;
+  height: 20px;
   background: none;
   border: none;
   cursor: pointer;
@@ -128,29 +132,23 @@ p {
   position: absolute;
   width: 100%;
   height: 2px;
-  background: #eafff8;
+  background: #eaf7f4;
   border-radius: 2px;
 }
 
 /* =========================================
-   HERO — MOBILE TIGHTENED
+   HERO — compact, premium
    ========================================= */
 
 .hero {
   position: relative;
-  padding: 110px 0 120px;
+  padding: 96px 0 88px;
   background:
-    radial-gradient(
-      800px 500px at 30% 15%,
-      rgba(40, 160, 140, 0.35),
-      transparent 65%
-    ),
     linear-gradient(
       to bottom,
-      var(--bg-hero-top),
-      var(--bg-hero-bottom)
+      #071312,
+      #050c0b
     );
-  overflow: hidden;
 }
 
 .hero::after {
@@ -159,10 +157,10 @@ p {
   left: 0;
   right: 0;
   bottom: 0;
-  height: 120px;
+  height: 80px;
   background: linear-gradient(
     to bottom,
-    rgba(5, 15, 13, 0),
+    rgba(5, 12, 11, 0),
     var(--bg-content)
   );
 }
@@ -179,84 +177,82 @@ p {
 .hero-actions {
   display: flex;
   flex-direction: column;
-  gap: 14px;
-  margin-top: 22px;
+  gap: 12px;
+  margin-top: 18px;
 }
 
 .btn {
-  padding: 14px 26px;
+  padding: 14px 24px;
   border-radius: 999px;
-  font-size: 0.95rem;
+  font-size: 0.9rem;
   font-weight: 500;
   text-decoration: none;
 }
 
 .btn-primary {
-  background: linear-gradient(135deg, #2fae96, #1c7f6d);
-  color: #eafff8;
-  box-shadow: 0 14px 36px rgba(40, 200, 170, 0.45);
+  background: linear-gradient(
+    135deg,
+    #2e9f8a,
+    #1f6f61
+  );
+  color: #eaf7f4;
 }
 
 .btn-secondary {
-  background: rgba(255, 255, 255, 0.05);
-  color: #d2ebe5;
+  background: rgba(255, 255, 255, 0.04);
+  color: #d1e6e0;
   border: 1px solid var(--border-soft);
 }
 
 /* =========================================
-   CONTENT SECTION
+   Content section
    ========================================= */
 
 .section {
-  padding: 80px 0 100px;
+  padding: 64px 0 80px;
   background: var(--bg-content);
 }
 
 /* =========================================
-   PRODUCTS — MOBILE DEPTH
+   Products — dark weight
    ========================================= */
 
 .products-grid {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 22px;
-  margin-top: 34px;
+  gap: 18px;
+  margin-top: 28px;
 }
 
 .product-card {
   background:
-    radial-gradient(
-      120% 120% at 30% 20%,
-      rgba(40, 160, 140, 0.22),
-      transparent 60%
-    ),
     linear-gradient(
       180deg,
-      #0c2f2a,
-      #061815
+      #081716,
+      #040b0a
     );
-  border-radius: 26px;
-  padding: 28px 26px;
-  border: 1px solid rgba(90, 200, 180, 0.12);
+  border-radius: 22px;
+  padding: 26px 24px;
+  border: 1px solid var(--border-soft);
   box-shadow:
-    0 30px 70px rgba(0, 0, 0, 0.75),
-    inset 0 1px 0 rgba(255, 255, 255, 0.04);
+    0 28px 60px rgba(0, 0, 0, 0.85),
+    inset 0 1px 0 rgba(255, 255, 255, 0.03);
 }
 
 .product-title {
-  margin: 0 0 12px;
+  margin: 0 0 10px;
   font-size: 1.05rem;
-  color: #eafff8;
+  color: #eaf7f4;
 }
 
 .product-desc {
   margin: 0;
-  font-size: 0.9rem;
-  color: #b7d6cf;
+  font-size: 0.88rem;
+  color: #aecac4;
 }
 
 /* =========================================
-   Desktop enhancements
+   Desktop refinement
    ========================================= */
 
 @media (min-width: 769px) {
@@ -266,7 +262,7 @@ p {
   }
 
   .hero {
-    padding: 160px 0 180px;
+    padding: 150px 0 140px;
   }
 
   .hero-actions {
@@ -275,31 +271,25 @@ p {
   }
 
   .section {
-    padding: 120px 0 140px;
+    padding: 110px 0 130px;
   }
 
   .products-grid {
     grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-    gap: 32px;
-    margin-top: 56px;
+    gap: 30px;
+    margin-top: 48px;
   }
 
   .product-card {
-    background:
-      linear-gradient(
-        180deg,
-        rgba(26, 92, 82, 0.85),
-        rgba(10, 34, 30, 0.95)
-      );
     transition:
-      transform 0.35s ease,
-      box-shadow 0.35s ease;
+      transform 0.3s ease,
+      box-shadow 0.3s ease;
   }
 
   .product-card:hover {
-    transform: translateY(-10px);
+    transform: translateY(-8px);
     box-shadow:
-      0 36px 80px rgba(0, 0, 0, 0.65),
-      0 0 0 1px var(--accent-glow);
+      0 34px 76px rgba(0, 0, 0, 0.7),
+      0 0 0 1px var(--accent-dim);
   }
 }
