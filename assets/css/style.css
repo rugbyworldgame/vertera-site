@@ -1,6 +1,6 @@
 /* =========================================
-   VERTERA 3.2 — Premium Quiet Confidence
-   Hero tightened + divider + hover refined
+   VERTERA 3.3 — Premium Quiet Confidence
+   Fix: card hover, burger, ghost menu
    ========================================= */
 
 * {
@@ -12,21 +12,17 @@ html {
 }
 
 :root {
-  /* Base */
   --bg-root: #050c0b;
   --bg-hero-top: #0b2623;
   --bg-hero-bottom: #050c0b;
   --bg-content: #050c0b;
 
-  /* Text */
   --text-main: #e9f4f1;
   --text-secondary: #a9c7c1;
 
-  /* Accent (restrained emerald) */
   --accent: #2e9f8a;
-  --accent-soft: rgba(46, 159, 138, 0.28);
+  --accent-soft: rgba(46, 159, 138, 0.35);
 
-  /* Borders */
   --border-soft: rgba(255, 255, 255, 0.06);
 }
 
@@ -113,20 +109,55 @@ p {
   color: #c8e1db;
   font-size: 0.9rem;
   font-weight: 500;
-  transition: color 0.2s ease;
 }
 
-.main-nav a:hover {
-  color: #eaf7f4;
+@media (max-width: 768px) {
+  .main-nav {
+    display: none;
+  }
 }
 
 /* =========================================
-   HERO — TIGHTENED
+   Burger (FIXED)
+   ========================================= */
+
+.burger {
+  display: none;
+  width: 28px;
+  height: 20px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  position: relative;
+}
+
+.burger span {
+  display: block;
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: #eaf7f4;
+  border-radius: 2px;
+}
+
+.burger span:nth-child(1) { top: 0; }
+.burger span:nth-child(2) { top: 9px; }
+.burger span:nth-child(3) { bottom: 0; }
+
+@media (max-width: 768px) {
+  .burger {
+    display: block;
+  }
+}
+
+/* =========================================
+   HERO
    ========================================= */
 
 .hero {
   position: relative;
-  padding: 120px 0 110px; /* ↓ было выше */
+  padding: 120px 0 110px;
   background:
     linear-gradient(
       to bottom,
@@ -184,7 +215,7 @@ p {
 }
 
 /* =========================================
-   MICRO DIVIDER (Hero → Products)
+   Section divider
    ========================================= */
 
 .section {
@@ -239,13 +270,14 @@ p {
     border-color 0.35s ease;
 }
 
-/* === DESKTOP HOVER — ЯВНЫЙ, НО ДОРОГОЙ === */
+/* === HOVER — ЯВНО ВИДНО === */
 @media (hover: hover) {
   .product-card:hover {
     transform: translateY(-10px);
-    border-color: rgba(46, 159, 138, 0.45);
+    border-color: rgba(46, 159, 138, 0.55);
     box-shadow:
-      0 42px 96px rgba(0, 0, 0, 0.75),
+      0 46px 110px rgba(0, 0, 0, 0.75),
+      0 -6px 24px rgba(46, 159, 138, 0.25),
       0 0 0 1px var(--accent-soft);
   }
 }
