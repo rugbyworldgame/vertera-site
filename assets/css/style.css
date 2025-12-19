@@ -1,11 +1,13 @@
 /* =========================================
-   VERTERA 3.6 — Premium Quiet Confidence
+   VERTERA 3.7 — Premium Quiet Confidence
    MODE: BURGER ONLY (desktop + mobile)
-   Overlay menu
+   Overlay menu — PREMIUM VISUAL FIX
    ========================================= */
 
 * { box-sizing: border-box; }
 html { font-size: 16px; }
+
+/* ---------- Variables ---------- */
 
 :root {
   --bg-root: #050c0b;
@@ -84,7 +86,7 @@ p {
   display: none;
 }
 
-/* ---------- Burger (VISIBLE EVERYWHERE) ---------- */
+/* ---------- Burger ---------- */
 
 .burger {
   display: block;
@@ -109,15 +111,20 @@ p {
 .burger span:nth-child(2){ top:9px; }
 .burger span:nth-child(3){ bottom:0; }
 
-/* ---------- Overlay menu ---------- */
+/* ---------- Overlay ---------- */
 
 .menu-overlay {
   position: fixed;
   inset: 0;
-  background: rgba(0,0,0,.65);
+  background:
+    radial-gradient(
+      1200px 800px at 70% 50%,
+      rgba(46,159,138,0.08),
+      rgba(0,0,0,0.85) 60%
+    );
   opacity: 0;
   pointer-events: none;
-  transition: opacity .3s ease;
+  transition: opacity .35s ease;
   z-index: 400;
 }
 
@@ -126,38 +133,55 @@ p {
   pointer-events: auto;
 }
 
+/* ---------- Mobile / Desktop Menu Panel ---------- */
+
 .mobile-menu {
   position: fixed;
   top: 0;
   right: 0;
-  width: 82%;
-  max-width: 320px;
+  width: 360px;
+  max-width: 88%;
   height: 100%;
-  background: linear-gradient(
-    to bottom,
-    #071312,
-    #050c0b
-  );
+  background:
+    linear-gradient(
+      to bottom,
+      #0b2623,
+      #050c0b 85%
+    );
+  box-shadow:
+    -40px 0 120px rgba(0,0,0,0.85),
+    inset 1px 0 0 rgba(255,255,255,0.06);
   transform: translateX(100%);
-  transition: transform .35s ease;
+  transition: transform .38s cubic-bezier(.4,0,.2,1);
   z-index: 401;
-  padding: 90px 26px 26px;
+  padding: 110px 36px 36px;
 }
 
 .mobile-menu.open {
   transform: translateX(0);
 }
 
+/* ---------- Close ---------- */
+
 .menu-close {
   position: absolute;
-  top: 22px;
-  right: 22px;
+  top: 28px;
+  right: 28px;
   background: none;
   border: none;
   color: #eaf7f4;
-  font-size: 1.3rem;
+  font-size: 1.4rem;
   cursor: pointer;
+  opacity: .85;
+  transition: opacity .2s ease, transform .2s ease;
 }
+
+.menu-close:hover {
+  opacity: 1;
+  transform: rotate(90deg);
+}
+
+/* ---------- Menu links ---------- */
 
 .mobile-nav {
   display: flex;
@@ -168,7 +192,17 @@ p {
 .mobile-nav a {
   text-decoration: none;
   color: #eaf7f4;
-  font-size: 1rem;
+  font-size: 1.05rem;
+  font-weight: 500;
+  letter-spacing: .02em;
+  padding: 10px 0;
+  border-bottom: 1px solid rgba(255,255,255,.06);
+  transition: color .25s ease, padding-left .25s ease;
+}
+
+.mobile-nav a:hover {
+  color: #bff3e7;
+  padding-left: 6px;
 }
 
 /* ---------- Hero ---------- */
@@ -200,6 +234,8 @@ p {
   gap:18px;
   margin-top:18px;
 }
+
+/* ---------- Buttons ---------- */
 
 .btn {
   padding:14px 26px;
