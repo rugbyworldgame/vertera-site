@@ -1,6 +1,6 @@
 /* =========================================
-   VERTERA 3.9 — Glass card frame (mobile+desktop)
-   ADD: glass rim like old cards
+   VERTERA 4.0 — Glass Cards Restored
+   MODE: Burger + Overlay
    ========================================= */
 
 * { box-sizing: border-box; }
@@ -16,12 +16,9 @@ html { font-size: 16px; }
   --text-secondary: #a9c7c1;
 
   --accent: #2e9f8a;
-  --accent-soft: rgba(46,159,138,.35);
-  --accent-inner: rgba(46,159,138,.18);
+  --accent-inner: rgba(46,159,138,.22);
 
   --border-soft: rgba(255,255,255,.06);
-  --glass-rim: rgba(255,255,255,.10);
-  --glass-rim-2: rgba(255,255,255,.05);
 }
 
 /* ---------- Base ---------- */
@@ -73,8 +70,6 @@ p { margin: 0 0 .85em; color: var(--text-secondary); }
   color: #eaf7f4;
 }
 
-/* ---------- Main nav (disabled) ---------- */
-
 .main-nav { display: none; }
 
 /* ---------- Burger ---------- */
@@ -109,8 +104,8 @@ p { margin: 0 0 .85em; color: var(--text-secondary); }
   inset: 0;
   background:
     radial-gradient(
-      1200px 800px at 70% 50%,
-      rgba(46,159,138,0.12),
+      1200px 800px at 72% 50%,
+      rgba(46,159,138,0.14),
       rgba(0,0,0,0.78) 60%
     );
   opacity: 0;
@@ -136,8 +131,8 @@ p { margin: 0 0 .85em; color: var(--text-secondary); }
   background:
     linear-gradient(
       to bottom,
-      #10332f,
-      #071312 40%,
+      #123b35,
+      #071312 45%,
       #050c0b
     );
   box-shadow:
@@ -160,11 +155,7 @@ p { margin: 0 0 .85em; color: var(--text-secondary); }
   color: #eaf7f4;
   font-size: 1.4rem;
   cursor: pointer;
-  opacity: .85;
-  transition: opacity .2s ease, transform .2s ease;
 }
-
-.menu-close:hover { opacity: 1; transform: rotate(90deg); }
 
 .mobile-nav {
   display: flex;
@@ -177,13 +168,9 @@ p { margin: 0 0 .85em; color: var(--text-secondary); }
   color: #eaf7f4;
   font-size: 1.05rem;
   font-weight: 500;
-  letter-spacing: .02em;
   padding: 10px 0;
   border-bottom: 1px solid rgba(255,255,255,.08);
-  transition: color .25s ease, padding-left .25s ease;
 }
-
-.mobile-nav a:hover { color: #bff3e7; padding-left: 6px; }
 
 /* ---------- Hero ---------- */
 
@@ -211,27 +198,6 @@ p { margin: 0 0 .85em; color: var(--text-secondary); }
 
 .hero-actions { display:flex; gap:18px; margin-top:18px; }
 
-/* ---------- Buttons ---------- */
-
-.btn {
-  padding:14px 26px;
-  border-radius:999px;
-  font-size:.9rem;
-  font-weight:500;
-  text-decoration:none;
-}
-
-.btn-primary {
-  background: linear-gradient(135deg,#2e9f8a,#1f6f61);
-  color:#eaf7f4;
-}
-
-.btn-secondary {
-  background: rgba(255,255,255,.04);
-  border:1px solid var(--border-soft);
-  color:#d1e6e0;
-}
-
 /* ---------- Section ---------- */
 
 .section {
@@ -257,31 +223,31 @@ p { margin: 0 0 .85em; color: var(--text-secondary); }
 }
 
 /* =========================================
-   Product cards — GLASS CLASSIC (old style)
+   PRODUCT CARDS — GLASS CLASSIC (RESTORED)
    ========================================= */
 
 .product-card {
   position: relative;
-  min-height: 360px; /* карточка выше */
+  min-height: 360px;
   padding: 26px 24px 30px;
   border-radius: 28px;
+  overflow: hidden;
 
   background:
     linear-gradient(
       135deg,
-      rgba(46,159,138,0.22),
-      rgba(11,38,35,0.65)
+      rgba(46,159,138,0.26),
+      rgba(11,38,35,0.72)
     );
 
   box-shadow:
-    0 30px 80px rgba(0,0,0,0.65),
+    0 28px 80px rgba(0,0,0,0.65),
     inset 0 0 0 1px rgba(255,255,255,0.06);
 
-  overflow: hidden;
   transition: transform .35s ease, box-shadow .35s ease;
 }
 
-/* ВНУТРЕННЯЯ стеклянная рамка */
+/* glass inner frame */
 .product-card::before {
   content: "";
   position: absolute;
@@ -292,18 +258,18 @@ p { margin: 0 0 .85em; color: var(--text-secondary); }
   background:
     linear-gradient(
       180deg,
-      rgba(255,255,255,0.08),
+      rgba(255,255,255,0.10),
       rgba(255,255,255,0.02)
     );
 
   box-shadow:
-    inset 0 0 0 1px rgba(255,255,255,0.10),
-    inset 0 18px 36px rgba(255,255,255,0.05);
+    inset 0 0 0 1px rgba(255,255,255,0.12),
+    inset 0 18px 36px rgba(255,255,255,0.06);
 
-  opacity: 0.85;
+  opacity: .9;
 }
 
-/* МЯГКИЙ внутренний свет */
+/* inner light + right side brighten */
 .product-card::after {
   content: "";
   position: absolute;
@@ -313,15 +279,19 @@ p { margin: 0 0 .85em; color: var(--text-secondary); }
 
   background:
     radial-gradient(
-      120% 80% at 30% 20%,
+      140% 90% at 80% 50%,
+      rgba(46,159,138,0.30),
+      transparent 65%
+    ),
+    radial-gradient(
+      120% 80% at 30% 18%,
       rgba(46,159,138,0.35),
       transparent 60%
     );
 
-  opacity: 0.35;
+  opacity: .45;
 }
 
-/* hover — НЕ контур, а подсветка изнутри */
 @media (hover:hover) {
   .product-card:hover {
     transform: translateY(-6px);
@@ -332,11 +302,10 @@ p { margin: 0 0 .85em; color: var(--text-secondary); }
   }
 
   .product-card:hover::after {
-    opacity: 0.55;
+    opacity: .6;
   }
 }
 
-/* Текст внутри */
 .product-card h3 {
   margin-top: 20px;
   font-size: 1.05rem;
@@ -344,55 +313,8 @@ p { margin: 0 0 .85em; color: var(--text-secondary); }
 }
 
 .product-card p {
-  font-size: 0.9rem;
+  font-size: .9rem;
   color: #b6d8d1;
-}
-
-
-/* glass rim (outer) */
-.product-card::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  border-radius: inherit;
-  pointer-events: none;
-  box-shadow:
-    inset 0 0 0 1px var(--glass-rim),
-    inset 0 0 0 2px rgba(255,255,255,.02),
-    inset 0 18px 30px rgba(255,255,255,.03);
-  opacity: .85;
-}
-
-/* glass highlight (top-left) */
-.product-card::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  border-radius: inherit;
-  pointer-events: none;
-  background:
-    radial-gradient(90% 70% at 25% 18%, rgba(255,255,255,.07), transparent 55%),
-    linear-gradient(135deg, rgba(255,255,255,.05), transparent 45%);
-  mix-blend-mode: screen;
-  opacity: .55;
-}
-
-@media (hover:hover){
-  .product-card:hover{
-    transform: translateY(-8px);
-    border-color: rgba(46,159,138,.28);
-    box-shadow:
-      inset 0 0 0 1px rgba(46,159,138,.14),
-      inset 0 0 46px rgba(46,159,138,.20),
-      0 42px 110px rgba(0,0,0,.7);
-  }
-  .product-card:hover::before{
-    opacity: 1;
-    box-shadow:
-      inset 0 0 0 1px rgba(255,255,255,.12),
-      inset 0 0 0 2px rgba(46,159,138,.06),
-      inset 0 20px 32px rgba(255,255,255,.04);
-  }
 }
 
 /* ---------- Mobile ---------- */
