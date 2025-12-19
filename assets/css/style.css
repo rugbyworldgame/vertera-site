@@ -1,15 +1,17 @@
 /* =========================================
-   VERTERA 3.3 — Premium Quiet Confidence
-   Fix: card hover, burger, ghost menu
+   VERTERA 3.4 — Premium Quiet Confidence
+   Fixes:
+   - hero height tightened
+   - real card hover
+   - ghost menu removed
+   - burger visible & controllable
    ========================================= */
 
-* {
-  box-sizing: border-box;
-}
+* { box-sizing: border-box; }
 
-html {
-  font-size: 16px;
-}
+html { font-size: 16px; }
+
+/* ---------- Variables ---------- */
 
 :root {
   --bg-root: #050c0b;
@@ -26,9 +28,7 @@ html {
   --border-soft: rgba(255, 255, 255, 0.06);
 }
 
-/* =========================================
-   Body
-   ========================================= */
+/* ---------- Body ---------- */
 
 body {
   margin: 0;
@@ -39,9 +39,7 @@ body {
   line-height: 1.6;
 }
 
-/* =========================================
-   Typography
-   ========================================= */
+/* ---------- Typography ---------- */
 
 h1, h2, h3 {
   margin: 0 0 0.55em;
@@ -54,9 +52,7 @@ p {
   color: var(--text-secondary);
 }
 
-/* =========================================
-   Layout
-   ========================================= */
+/* ---------- Layout ---------- */
 
 .container {
   max-width: 1200px;
@@ -64,9 +60,7 @@ p {
   padding: 0 22px;
 }
 
-/* =========================================
-   Header
-   ========================================= */
+/* ---------- Header ---------- */
 
 .site-header {
   position: sticky;
@@ -95,9 +89,7 @@ p {
   color: #eaf7f4;
 }
 
-/* =========================================
-   Navigation
-   ========================================= */
+/* ---------- Navigation ---------- */
 
 .main-nav {
   display: flex;
@@ -111,15 +103,14 @@ p {
   font-weight: 500;
 }
 
+/* Ghost menu FIX */
 @media (max-width: 768px) {
   .main-nav {
     display: none;
   }
 }
 
-/* =========================================
-   Burger (FIXED)
-   ========================================= */
+/* ---------- Burger ---------- */
 
 .burger {
   display: none;
@@ -132,7 +123,6 @@ p {
 }
 
 .burger span {
-  display: block;
   position: absolute;
   left: 0;
   width: 100%;
@@ -146,24 +136,34 @@ p {
 .burger span:nth-child(3) { bottom: 0; }
 
 @media (max-width: 768px) {
-  .burger {
-    display: block;
+  .burger { display: block; }
+
+  .main-nav.active {
+    display: flex;
+    position: absolute;
+    top: 60px;
+    left: 0;
+    right: 0;
+    flex-direction: column;
+    gap: 18px;
+    padding: 22px;
+    background: rgba(5, 12, 11, 0.96);
+    backdrop-filter: blur(14px);
+    border-bottom: 1px solid var(--border-soft);
+    z-index: 250;
   }
 }
 
-/* =========================================
-   HERO
-   ========================================= */
+/* ---------- HERO ---------- */
 
 .hero {
   position: relative;
-  padding: 120px 0 110px;
-  background:
-    linear-gradient(
-      to bottom,
-      var(--bg-hero-top),
-      var(--bg-hero-bottom)
-    );
+  padding: 110px 0 95px; /* tightened */
+  background: linear-gradient(
+    to bottom,
+    var(--bg-hero-top),
+    var(--bg-hero-bottom)
+  );
 }
 
 .hero::after {
@@ -172,7 +172,7 @@ p {
   left: 0;
   right: 0;
   bottom: 0;
-  height: 90px;
+  height: 80px;
   background: linear-gradient(
     to bottom,
     rgba(5, 12, 11, 0),
@@ -185,14 +185,12 @@ p {
   z-index: 1;
 }
 
-/* =========================================
-   Buttons
-   ========================================= */
+/* ---------- Buttons ---------- */
 
 .hero-actions {
   display: flex;
   gap: 18px;
-  margin-top: 20px;
+  margin-top: 18px;
 }
 
 .btn {
@@ -214,13 +212,11 @@ p {
   border: 1px solid var(--border-soft);
 }
 
-/* =========================================
-   Section divider
-   ========================================= */
+/* ---------- Section Divider ---------- */
 
 .section {
   position: relative;
-  padding: 100px 0 130px;
+  padding: 95px 0 120px;
   background: var(--bg-content);
 }
 
@@ -229,7 +225,7 @@ p {
   position: absolute;
   top: 0;
   left: 50%;
-  width: 120px;
+  width: 140px;
   height: 1px;
   transform: translateX(-50%);
   background: linear-gradient(
@@ -240,24 +236,17 @@ p {
   );
 }
 
-/* =========================================
-   Products
-   ========================================= */
+/* ---------- Products ---------- */
 
 .products-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
   gap: 30px;
-  margin-top: 48px;
+  margin-top: 46px;
 }
 
 .product-card {
-  background:
-    linear-gradient(
-      180deg,
-      #0a1f1d,
-      #050c0b
-    );
+  background: linear-gradient(180deg, #0a1f1d, #050c0b);
   border-radius: 22px;
   padding: 26px 24px;
   border: 1px solid var(--border-soft);
@@ -270,14 +259,14 @@ p {
     border-color 0.35s ease;
 }
 
-/* === HOVER — ЯВНО ВИДНО === */
+/* REAL hover — видно даже на тёмных мониторах */
 @media (hover: hover) {
   .product-card:hover {
     transform: translateY(-10px);
-    border-color: rgba(46, 159, 138, 0.55);
+    border-color: rgba(46, 159, 138, 0.6);
     box-shadow:
-      0 46px 110px rgba(0, 0, 0, 0.75),
-      0 -6px 24px rgba(46, 159, 138, 0.25),
+      0 50px 120px rgba(0, 0, 0, 0.75),
+      0 -8px 26px rgba(46, 159, 138, 0.3),
       0 0 0 1px var(--accent-soft);
   }
 }
@@ -294,25 +283,12 @@ p {
   color: #aecac4;
 }
 
-/* =========================================
-   Mobile
-   ========================================= */
+/* ---------- Mobile ---------- */
 
 @media (max-width: 768px) {
-
-  .hero {
-    padding: 90px 0 80px;
-  }
-
-  .hero-actions {
-    flex-direction: column;
-    gap: 12px;
-  }
-
-  .section {
-    padding: 70px 0 90px;
-  }
-
+  .hero { padding: 85px 0 75px; }
+  .hero-actions { flex-direction: column; gap: 12px; }
+  .section { padding: 70px 0 90px; }
   .products-grid {
     grid-template-columns: 1fr;
     gap: 18px;
