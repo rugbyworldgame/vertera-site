@@ -1,7 +1,7 @@
 /* =========================================
-   VERTERA 3.7 — Premium Quiet Confidence
+   VERTERA 3.8 — Premium Quiet Confidence
    MODE: BURGER ONLY (desktop + mobile)
-   Overlay menu — PREMIUM VISUAL FIX
+   Overlay menu — VISUAL DEPTH FIX
    ========================================= */
 
 * { box-sizing: border-box; }
@@ -11,7 +11,7 @@ html { font-size: 16px; }
 
 :root {
   --bg-root: #050c0b;
-  --bg-hero-top: #0b2623;
+  --bg-hero-top: #0f3430;     /* СВЕТЛЕЕ ДЛЯ ИЕРАРХИИ */
   --bg-hero-bottom: #050c0b;
   --bg-content: #050c0b;
 
@@ -57,20 +57,23 @@ p {
   position: sticky;
   top: 0;
   z-index: 300;
-  background: linear-gradient(
-    to bottom,
-    rgba(11,38,35,.96),
-    rgba(6,18,17,.78)
-  );
-  backdrop-filter: blur(12px);
-  border-bottom: 1px solid var(--border-soft);
+  background:
+    linear-gradient(
+      to bottom,
+      rgba(18,52,48,.96),
+      rgba(6,18,17,.78)
+    );
+  backdrop-filter: blur(14px) saturate(120%);
+  border-bottom: 1px solid rgba(255,255,255,.08);
 }
+
+/* ---------- Header layout ---------- */
 
 .header-inner {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  min-height: 60px;
+  min-height: 62px;
 }
 
 .brand {
@@ -82,16 +85,14 @@ p {
 
 /* ---------- Main nav (DISABLED) ---------- */
 
-.main-nav {
-  display: none;
-}
+.main-nav { display: none; }
 
 /* ---------- Burger ---------- */
 
 .burger {
   display: block;
-  width: 28px;
-  height: 20px;
+  width: 30px;
+  height: 22px;
   background: none;
   border: none;
   cursor: pointer;
@@ -105,10 +106,11 @@ p {
   height: 2px;
   background: #eaf7f4;
   border-radius: 2px;
+  transition: transform .3s ease, opacity .3s ease;
 }
 
 .burger span:nth-child(1){ top:0; }
-.burger span:nth-child(2){ top:9px; }
+.burger span:nth-child(2){ top:10px; }
 .burger span:nth-child(3){ bottom:0; }
 
 /* ---------- Overlay ---------- */
@@ -118,13 +120,13 @@ p {
   inset: 0;
   background:
     radial-gradient(
-      1200px 800px at 70% 50%,
-      rgba(46,159,138,0.08),
-      rgba(0,0,0,0.85) 60%
+      1200px 900px at 65% 50%,
+      rgba(46,159,138,.12),
+      rgba(0,0,0,.9) 65%
     );
   opacity: 0;
   pointer-events: none;
-  transition: opacity .35s ease;
+  transition: opacity .4s ease;
   z-index: 400;
 }
 
@@ -133,28 +135,28 @@ p {
   pointer-events: auto;
 }
 
-/* ---------- Mobile / Desktop Menu Panel ---------- */
+/* ---------- Menu panel ---------- */
 
 .mobile-menu {
   position: fixed;
   top: 0;
   right: 0;
-  width: 360px;
+  width: 380px;
   max-width: 88%;
   height: 100%;
   background:
     linear-gradient(
       to bottom,
-      #0b2623,
-      #050c0b 85%
+      #123f3a,
+      #050c0b 80%
     );
   box-shadow:
-    -40px 0 120px rgba(0,0,0,0.85),
-    inset 1px 0 0 rgba(255,255,255,0.06);
+    -50px 0 140px rgba(0,0,0,.9),
+    inset 1px 0 0 rgba(255,255,255,.08);
   transform: translateX(100%);
-  transition: transform .38s cubic-bezier(.4,0,.2,1);
+  transition: transform .4s cubic-bezier(.4,0,.2,1);
   z-index: 401;
-  padding: 110px 36px 36px;
+  padding: 120px 40px 40px;
 }
 
 .mobile-menu.open {
@@ -173,7 +175,7 @@ p {
   font-size: 1.4rem;
   cursor: pointer;
   opacity: .85;
-  transition: opacity .2s ease, transform .2s ease;
+  transition: opacity .2s ease, transform .25s ease;
 }
 
 .menu-close:hover {
@@ -186,23 +188,23 @@ p {
 .mobile-nav {
   display: flex;
   flex-direction: column;
-  gap: 22px;
+  gap: 26px;
 }
 
 .mobile-nav a {
   text-decoration: none;
   color: #eaf7f4;
-  font-size: 1.05rem;
+  font-size: 1.1rem;
   font-weight: 500;
-  letter-spacing: .02em;
-  padding: 10px 0;
-  border-bottom: 1px solid rgba(255,255,255,.06);
+  letter-spacing: .03em;
+  padding: 12px 0;
+  border-bottom: 1px solid rgba(255,255,255,.08);
   transition: color .25s ease, padding-left .25s ease;
 }
 
 .mobile-nav a:hover {
-  color: #bff3e7;
-  padding-left: 6px;
+  color: #c9f6ea;
+  padding-left: 8px;
 }
 
 /* ---------- Hero ---------- */
@@ -210,18 +212,19 @@ p {
 .hero {
   position: relative;
   padding: 110px 0 95px;
-  background: linear-gradient(
-    to bottom,
-    var(--bg-hero-top),
-    var(--bg-hero-bottom)
-  );
+  background:
+    linear-gradient(
+      to bottom,
+      var(--bg-hero-top),
+      var(--bg-hero-bottom)
+    );
 }
 
 .hero::after {
   content:"";
   position:absolute;
   left:0; right:0; bottom:0;
-  height:80px;
+  height:90px;
   background: linear-gradient(
     to bottom,
     rgba(5,12,11,0),
@@ -251,7 +254,7 @@ p {
 }
 
 .btn-secondary {
-  background: rgba(255,255,255,.04);
+  background: rgba(255,255,255,.05);
   border:1px solid var(--border-soft);
   color:#d1e6e0;
 }
@@ -260,7 +263,7 @@ p {
 
 .section {
   position: relative;
-  padding: 95px 0 120px;
+  padding: 100px 0 130px;
   background: var(--bg-content);
 }
 
@@ -269,15 +272,17 @@ p {
   position:absolute;
   top:0;
   left:50%;
-  width:140px;
-  height:1px;
+  width:220px;
+  height:2px;
   transform:translateX(-50%);
-  background: linear-gradient(
-    to right,
-    transparent,
-    rgba(46,159,138,.35),
-    transparent
-  );
+  background:
+    linear-gradient(
+      to right,
+      transparent,
+      rgba(46,159,138,.55),
+      transparent
+    );
+  box-shadow: 0 0 24px rgba(46,159,138,.25);
 }
 
 /* ---------- Products ---------- */
@@ -285,18 +290,19 @@ p {
 .products-grid {
   display:grid;
   grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
-  gap:30px;
-  margin-top:46px;
+  gap:32px;
+  margin-top:50px;
 }
 
 .product-card {
-  background: linear-gradient(180deg,#0a1f1d,#050c0b);
+  background:
+    linear-gradient(180deg,#123f3a,#050c0b);
   border-radius:22px;
-  padding:26px 24px;
+  padding:28px 26px;
   border:1px solid var(--border-soft);
   box-shadow:
-    0 26px 60px rgba(0,0,0,.78),
-    inset 0 1px 0 rgba(255,255,255,.04);
+    0 30px 70px rgba(0,0,0,.85),
+    inset 0 1px 0 rgba(255,255,255,.05);
   transition:transform .35s ease, box-shadow .35s ease, border-color .35s ease;
 }
 
@@ -305,8 +311,8 @@ p {
     transform:translateY(-10px);
     border-color:rgba(46,159,138,.6);
     box-shadow:
-      0 50px 120px rgba(0,0,0,.75),
-      0 -8px 26px rgba(46,159,138,.3),
+      0 55px 130px rgba(0,0,0,.75),
+      0 -10px 30px rgba(46,159,138,.35),
       0 0 0 1px var(--accent-soft);
   }
 }
