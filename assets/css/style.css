@@ -1,6 +1,6 @@
-  /* =========================================
+/* =========================================
    VERTERA — STYLE (Vertera 3)
-   Full restore + vertical tuning + smooth scroll
+   Full restore + vertical tuning + smooth scroll (FINAL)
    ========================================= */
 
 /* ---------- THEME FALLBACK ---------- */
@@ -137,8 +137,10 @@ h2{ font-size:1.65rem; }
   top:0;
   right:0;
   z-index:301;
-  width:340px;
-  max-width:86%;
+
+  width:300px;          /* ← было 340 */
+  max-width:72%;        /* ← было 86% */
+
   height:100%;
   background:
     radial-gradient(circle at 10% 0%, rgba(42,143,130,.18), transparent 55%),
@@ -235,7 +237,7 @@ h2{ font-size:1.65rem; }
 }
 
 /* =========================================
-   Products (SMOOTH SCROLL SAFE)
+   Products — SMOOTH SCROLL SAFE
    ========================================= */
 .products-grid{
   display:grid;
@@ -256,7 +258,6 @@ h2{ font-size:1.65rem; }
   backdrop-filter:blur(14px);
   overflow:hidden;
 
-  /* 🔑 плавность */
   will-change:transform;
   transform:translateZ(0);
 }
@@ -302,4 +303,4 @@ h2{ font-size:1.65rem; }
   .hero-actions{ flex-direction:column; align-items:flex-start; }
   .section{ padding:56px 0 72px; }
   .product-card::before{ height:124px; }
-   }
+}
