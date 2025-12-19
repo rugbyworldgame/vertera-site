@@ -1,6 +1,6 @@
 /* =========================================
-   VERTERA 4.0 — Glass Cards Restored
-   MODE: Burger + Overlay
+   VERTERA 4.1 — Card Geometry Fix
+   Glass preserved, height normalized
    ========================================= */
 
 * { box-sizing: border-box; }
@@ -157,21 +157,6 @@ p { margin: 0 0 .85em; color: var(--text-secondary); }
   cursor: pointer;
 }
 
-.mobile-nav {
-  display: flex;
-  flex-direction: column;
-  gap: 22px;
-}
-
-.mobile-nav a {
-  text-decoration: none;
-  color: #eaf7f4;
-  font-size: 1.05rem;
-  font-weight: 500;
-  padding: 10px 0;
-  border-bottom: 1px solid rgba(255,255,255,.08);
-}
-
 /* ---------- Hero ---------- */
 
 .hero {
@@ -184,75 +169,51 @@ p { margin: 0 0 .85em; color: var(--text-secondary); }
   );
 }
 
-.hero::after {
-  content:"";
-  position:absolute;
-  left:0; right:0; bottom:0;
-  height:80px;
-  background: linear-gradient(
-    to bottom,
-    rgba(5,12,11,0),
-    var(--bg-content)
-  );
-}
-
-.hero-actions { display:flex; gap:18px; margin-top:18px; }
-
 /* ---------- Section ---------- */
 
 .section {
   position: relative;
-  padding: 95px 0 120px;
+  padding: 90px 0 110px;
   background: var(--bg-content);
 }
 
-.section::before {
-  content:"";
-  position:absolute;
-  top:0;
-  left:50%;
-  width:140px;
-  height:1px;
-  transform:translateX(-50%);
-  background: linear-gradient(
-    to right,
-    transparent,
-    rgba(46,159,138,.35),
-    transparent
-  );
-}
-
 /* =========================================
-   PRODUCT CARDS — GLASS CLASSIC (RESTORED)
+   PRODUCT CARDS — NORMALIZED GEOMETRY
    ========================================= */
+
+.products-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 28px;
+}
 
 .product-card {
   position: relative;
-  min-height: 360px;
-  padding: 26px 24px 30px;
-  border-radius: 28px;
+  padding: 26px 26px 30px;
+  border-radius: 26px;
   overflow: hidden;
 
+  /* ключевое: НЕТ min-height */
   background:
     linear-gradient(
       135deg,
-      rgba(46,159,138,0.26),
-      rgba(11,38,35,0.72)
+      rgba(46,159,138,0.24),
+      rgba(11,38,35,0.70)
     );
 
   box-shadow:
-    0 28px 80px rgba(0,0,0,0.65),
+    0 26px 70px rgba(0,0,0,0.65),
     inset 0 0 0 1px rgba(255,255,255,0.06);
 
   transition: transform .35s ease, box-shadow .35s ease;
 }
 
-/* glass inner frame */
+/* внутренняя стеклянная рамка */
 .product-card::before {
   content: "";
   position: absolute;
   inset: 10px;
-  border-radius: 20px;
+  border-radius: 18px;
   pointer-events: none;
 
   background:
@@ -264,12 +225,10 @@ p { margin: 0 0 .85em; color: var(--text-secondary); }
 
   box-shadow:
     inset 0 0 0 1px rgba(255,255,255,0.12),
-    inset 0 18px 36px rgba(255,255,255,0.06);
-
-  opacity: .9;
+    inset 0 14px 28px rgba(255,255,255,0.05);
 }
 
-/* inner light + right side brighten */
+/* мягкий внутренний свет */
 .product-card::after {
   content: "";
   position: absolute;
@@ -280,13 +239,8 @@ p { margin: 0 0 .85em; color: var(--text-secondary); }
   background:
     radial-gradient(
       140% 90% at 80% 50%,
-      rgba(46,159,138,0.30),
+      rgba(46,159,138,0.28),
       transparent 65%
-    ),
-    radial-gradient(
-      120% 80% at 30% 18%,
-      rgba(46,159,138,0.35),
-      transparent 60%
     );
 
   opacity: .45;
@@ -296,9 +250,9 @@ p { margin: 0 0 .85em; color: var(--text-secondary); }
   .product-card:hover {
     transform: translateY(-6px);
     box-shadow:
-      0 50px 120px rgba(0,0,0,0.75),
-      inset 0 0 0 1px rgba(46,159,138,0.18),
-      inset 0 0 60px rgba(46,159,138,0.25);
+      0 44px 100px rgba(0,0,0,0.72),
+      inset 0 0 0 1px rgba(46,159,138,0.16),
+      inset 0 0 48px rgba(46,159,138,0.22);
   }
 
   .product-card:hover::after {
@@ -306,8 +260,9 @@ p { margin: 0 0 .85em; color: var(--text-secondary); }
   }
 }
 
+/* текст */
 .product-card h3 {
-  margin-top: 20px;
+  margin-top: 6px;
   font-size: 1.05rem;
   color: #eaf7f4;
 }
@@ -315,13 +270,12 @@ p { margin: 0 0 .85em; color: var(--text-secondary); }
 .product-card p {
   font-size: .9rem;
   color: #b6d8d1;
+  max-width: 32ch;
 }
 
 /* ---------- Mobile ---------- */
 
 @media (max-width:768px){
-  .hero{ padding:85px 0 75px; }
-  .hero-actions{ flex-direction:column; gap:12px; }
   .section{ padding:70px 0 90px; }
   .products-grid{ grid-template-columns:1fr; gap:18px; }
 }
