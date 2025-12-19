@@ -1,6 +1,6 @@
 /* =========================================
-   VERTERA 3.0 — Premium Quiet Scene
-   Dark glass, weight, calm confidence
+   VERTERA 3.2 — Premium Gradient Balance
+   Dark → Malachite → Dark
    ========================================= */
 
 * {
@@ -12,21 +12,27 @@ html {
 }
 
 :root {
-  /* Base surfaces */
+  /* Base */
   --bg-root: #050c0b;
-  --bg-hero: #071312;
-  --bg-content: #050c0b;
+
+  /* Hero gradient */
+  --hero-top: #0f3a34;   /* малахитовый свет */
+  --hero-mid: #0a2421;
+  --hero-bottom: #050c0b;
+
+  /* Content */
+  --bg-content: #060f0e;
 
   /* Text */
   --text-main: #e9f4f1;
   --text-secondary: #a9c7c1;
 
-  /* Accent (very restrained) */
+  /* Accent */
   --accent: #2e9f8a;
   --accent-dim: rgba(46, 159, 138, 0.18);
 
   /* Borders */
-  --border-soft: rgba(255, 255, 255, 0.06);
+  --border-soft: rgba(255, 255, 255, 0.08);
 }
 
 /* =========================================
@@ -77,8 +83,8 @@ p {
   z-index: 300;
   background: linear-gradient(
     to bottom,
-    rgba(6, 18, 17, 0.92),
-    rgba(6, 18, 17, 0.72)
+    rgba(10, 34, 30, 0.92),
+    rgba(10, 34, 30, 0.75)
   );
   backdrop-filter: blur(12px);
   border-bottom: 1px solid var(--border-soft);
@@ -99,7 +105,7 @@ p {
 }
 
 /* =========================================
-   Navigation (desktop)
+   Navigation
    ========================================= */
 
 .main-nav {
@@ -109,7 +115,7 @@ p {
 
 .main-nav a {
   text-decoration: none;
-  color: #c8e1db;
+  color: #cfe6e0;
   font-size: 0.9rem;
   font-weight: 500;
 }
@@ -137,17 +143,18 @@ p {
 }
 
 /* =========================================
-   HERO — compact, premium
+   HERO — correct light transition
    ========================================= */
 
 .hero {
   position: relative;
-  padding: 96px 0 88px;
+  padding: 100px 0 90px;
   background:
     linear-gradient(
       to bottom,
-      #071312,
-      #050c0b
+      var(--hero-top),
+      var(--hero-mid) 55%,
+      var(--hero-bottom)
     );
 }
 
@@ -157,10 +164,10 @@ p {
   left: 0;
   right: 0;
   bottom: 0;
-  height: 80px;
+  height: 90px;
   background: linear-gradient(
     to bottom,
-    rgba(5, 12, 11, 0),
+    rgba(6, 15, 14, 0),
     var(--bg-content)
   );
 }
@@ -199,44 +206,44 @@ p {
 }
 
 .btn-secondary {
-  background: rgba(255, 255, 255, 0.04);
+  background: rgba(255, 255, 255, 0.045);
   color: #d1e6e0;
   border: 1px solid var(--border-soft);
 }
 
 /* =========================================
-   Content section
+   Section
    ========================================= */
 
 .section {
-  padding: 64px 0 80px;
+  padding: 70px 0 90px;
   background: var(--bg-content);
 }
 
 /* =========================================
-   Products — dark weight
+   Products — visible edges
    ========================================= */
 
 .products-grid {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 18px;
-  margin-top: 28px;
+  gap: 20px;
+  margin-top: 30px;
 }
 
 .product-card {
   background:
     linear-gradient(
       180deg,
-      #081716,
+      #0b2220,
       #040b0a
     );
-  border-radius: 22px;
+  border-radius: 24px;
   padding: 26px 24px;
-  border: 1px solid var(--border-soft);
+  border: 1px solid rgba(255, 255, 255, 0.12);
   box-shadow:
-    0 28px 60px rgba(0, 0, 0, 0.85),
-    inset 0 1px 0 rgba(255, 255, 255, 0.03);
+    0 26px 60px rgba(0, 0, 0, 0.85),
+    inset 0 1px 0 rgba(255, 255, 255, 0.05);
 }
 
 .product-title {
@@ -256,10 +263,6 @@ p {
    ========================================= */
 
 @media (min-width: 769px) {
-
-  .burger {
-    display: none;
-  }
 
   .hero {
     padding: 150px 0 140px;
