@@ -256,29 +256,98 @@ p { margin: 0 0 .85em; color: var(--text-secondary); }
   );
 }
 
-/* ---------- Products (GLASS RIM) ---------- */
-
-.products-grid {
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
-  gap:30px;
-  margin-top:46px;
-}
+/* =========================================
+   Product cards — GLASS CLASSIC (old style)
+   ========================================= */
 
 .product-card {
   position: relative;
+  min-height: 360px; /* карточка выше */
+  padding: 26px 24px 30px;
+  border-radius: 28px;
+
   background:
-    radial-gradient(140% 120% at 30% 20%, rgba(46,159,138,0.14), transparent 60%),
-    linear-gradient(180deg,#0a1f1d,#050c0b);
-  border-radius: 26px;
-  padding: 26px 24px;
-  border: 1px solid rgba(255,255,255,.06);
+    linear-gradient(
+      135deg,
+      rgba(46,159,138,0.22),
+      rgba(11,38,35,0.65)
+    );
+
   box-shadow:
-    0 24px 60px rgba(0,0,0,.78),
-    inset 0 1px 0 rgba(255,255,255,.04);
-  transition: transform .35s ease, box-shadow .35s ease, border-color .35s ease;
+    0 30px 80px rgba(0,0,0,0.65),
+    inset 0 0 0 1px rgba(255,255,255,0.06);
+
   overflow: hidden;
+  transition: transform .35s ease, box-shadow .35s ease;
 }
+
+/* ВНУТРЕННЯЯ стеклянная рамка */
+.product-card::before {
+  content: "";
+  position: absolute;
+  inset: 10px;
+  border-radius: 20px;
+  pointer-events: none;
+
+  background:
+    linear-gradient(
+      180deg,
+      rgba(255,255,255,0.08),
+      rgba(255,255,255,0.02)
+    );
+
+  box-shadow:
+    inset 0 0 0 1px rgba(255,255,255,0.10),
+    inset 0 18px 36px rgba(255,255,255,0.05);
+
+  opacity: 0.85;
+}
+
+/* МЯГКИЙ внутренний свет */
+.product-card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+
+  background:
+    radial-gradient(
+      120% 80% at 30% 20%,
+      rgba(46,159,138,0.35),
+      transparent 60%
+    );
+
+  opacity: 0.35;
+}
+
+/* hover — НЕ контур, а подсветка изнутри */
+@media (hover:hover) {
+  .product-card:hover {
+    transform: translateY(-6px);
+    box-shadow:
+      0 50px 120px rgba(0,0,0,0.75),
+      inset 0 0 0 1px rgba(46,159,138,0.18),
+      inset 0 0 60px rgba(46,159,138,0.25);
+  }
+
+  .product-card:hover::after {
+    opacity: 0.55;
+  }
+}
+
+/* Текст внутри */
+.product-card h3 {
+  margin-top: 20px;
+  font-size: 1.05rem;
+  color: #eaf7f4;
+}
+
+.product-card p {
+  font-size: 0.9rem;
+  color: #b6d8d1;
+}
+
 
 /* glass rim (outer) */
 .product-card::before {
