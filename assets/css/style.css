@@ -1,5 +1,6 @@
 /* =========================================
    Vertera — Premium Scene Styles (Vertera 2)
+   Mobile-first depth tuning
    ========================================= */
 
 * {
@@ -19,9 +20,9 @@ html {
   --text-secondary: #b6d6cf;
 
   --accent-main: #2fae96;
-  --accent-glow: rgba(120, 255, 220, 0.18);
+  --accent-glow: rgba(90, 200, 180, 0.25);
 
-  --border-soft: rgba(255, 255, 255, 0.08);
+  --border-soft: rgba(255, 255, 255, 0.06);
 }
 
 /* =========================================
@@ -34,7 +35,7 @@ body {
     Roboto, Arial, sans-serif;
   background: var(--bg-content);
   color: var(--text-main);
-  line-height: 1.65;
+  line-height: 1.6;
 }
 
 /* =========================================
@@ -42,13 +43,13 @@ body {
    ========================================= */
 
 h1, h2, h3 {
-  margin: 0 0 0.7em;
+  margin: 0 0 0.6em;
   font-weight: 500;
   letter-spacing: 0.01em;
 }
 
 p {
-  margin: 0 0 1em;
+  margin: 0 0 0.9em;
   color: var(--text-secondary);
 }
 
@@ -59,7 +60,7 @@ p {
 .container {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 0 24px;
+  padding: 0 22px;
 }
 
 /* =========================================
@@ -72,8 +73,8 @@ p {
   z-index: 300;
   background: linear-gradient(
     to bottom,
-    rgba(8, 32, 28, 0.85),
-    rgba(8, 32, 28, 0.6)
+    rgba(6, 28, 24, 0.9),
+    rgba(6, 28, 24, 0.65)
   );
   backdrop-filter: blur(14px) saturate(120%);
   border-bottom: 1px solid var(--border-soft);
@@ -83,7 +84,7 @@ p {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  min-height: 64px;
+  min-height: 60px;
 }
 
 .brand {
@@ -107,12 +108,6 @@ p {
   color: #cfe9e3;
   font-size: 0.95rem;
   font-weight: 500;
-  transition: color 0.2s ease, text-shadow 0.2s ease;
-}
-
-.main-nav a:hover {
-  color: #eafff8;
-  text-shadow: 0 0 10px rgba(120, 255, 220, 0.25);
 }
 
 /* =========================================
@@ -121,8 +116,8 @@ p {
 
 .burger {
   display: none;
-  width: 32px;
-  height: 24px;
+  width: 30px;
+  height: 22px;
   background: none;
   border: none;
   cursor: pointer;
@@ -137,21 +132,17 @@ p {
   border-radius: 2px;
 }
 
-.burger span:nth-child(1) { top: 0; }
-.burger span:nth-child(2) { top: 11px; }
-.burger span:nth-child(3) { bottom: 0; }
-
 /* =========================================
-   HERO — ОТДЕЛЬНАЯ СЦЕНА
+   HERO — MOBILE TIGHTENED
    ========================================= */
 
 .hero {
   position: relative;
-  padding: 160px 0 180px;
+  padding: 110px 0 120px;
   background:
     radial-gradient(
-      900px 600px at 25% 15%,
-      rgba(60, 190, 165, 0.28),
+      800px 500px at 30% 15%,
+      rgba(40, 160, 140, 0.35),
       transparent 65%
     ),
     linear-gradient(
@@ -168,13 +159,12 @@ p {
   left: 0;
   right: 0;
   bottom: 0;
-  height: 160px;
+  height: 120px;
   background: linear-gradient(
     to bottom,
     rgba(5, 15, 13, 0),
     var(--bg-content)
   );
-  pointer-events: none;
 }
 
 .hero > .container {
@@ -188,83 +178,69 @@ p {
 
 .hero-actions {
   display: flex;
-  gap: 18px;
-  margin-top: 28px;
-  flex-wrap: wrap;
+  flex-direction: column;
+  gap: 14px;
+  margin-top: 22px;
 }
 
 .btn {
-  padding: 14px 30px;
+  padding: 14px 26px;
   border-radius: 999px;
   font-size: 0.95rem;
   font-weight: 500;
   text-decoration: none;
-  transition: transform 0.2s ease, box-shadow 0.25s ease;
 }
 
 .btn-primary {
   background: linear-gradient(135deg, #2fae96, #1c7f6d);
   color: #eafff8;
-  box-shadow: 0 12px 34px rgba(50, 200, 170, 0.35);
-}
-
-.btn-primary:hover {
-  transform: translateY(-1px);
-  box-shadow: 0 20px 50px rgba(50, 200, 170, 0.45);
+  box-shadow: 0 14px 36px rgba(40, 200, 170, 0.45);
 }
 
 .btn-secondary {
-  background: rgba(255, 255, 255, 0.06);
+  background: rgba(255, 255, 255, 0.05);
   color: #d2ebe5;
   border: 1px solid var(--border-soft);
 }
 
 /* =========================================
-   CONTENT SECTION (НИЖЕ HERO)
+   CONTENT SECTION
    ========================================= */
 
 .section {
-  padding: 120px 0 140px;
+  padding: 80px 0 100px;
   background: var(--bg-content);
 }
 
 /* =========================================
-   Products grid — ПЛАТФОРМА
+   PRODUCTS — MOBILE DEPTH
    ========================================= */
 
 .products-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: 32px;
-  margin-top: 56px;
+  grid-template-columns: 1fr;
+  gap: 22px;
+  margin-top: 34px;
 }
 
 .product-card {
   background:
+    radial-gradient(
+      120% 120% at 30% 20%,
+      rgba(40, 160, 140, 0.22),
+      transparent 60%
+    ),
     linear-gradient(
       180deg,
-      rgba(26, 92, 82, 0.85),
-      rgba(10, 34, 30, 0.95)
+      #0c2f2a,
+      #061815
     );
-  border-radius: 24px;
-  padding: 34px 30px;
-  border: 1px solid var(--border-soft);
+  border-radius: 26px;
+  padding: 28px 26px;
+  border: 1px solid rgba(90, 200, 180, 0.12);
   box-shadow:
-    0 26px 60px rgba(0, 0, 0, 0.55),
-    inset 0 1px 0 rgba(255, 255, 255, 0.05);
-  transition:
-    transform 0.35s ease,
-    box-shadow 0.35s ease;
-}
-
-/* Hover — только desktop */
-@media (hover: hover) {
-  .product-card:hover {
-    transform: translateY(-10px);
-    box-shadow:
-      0 36px 80px rgba(0, 0, 0, 0.65),
-      0 0 0 1px var(--accent-glow);
-  }
+    0 30px 70px rgba(0, 0, 0, 0.75),
+    inset 0 1px 0 rgba(255, 255, 255, 0.04);
 }
 
 .product-title {
@@ -280,24 +256,50 @@ p {
 }
 
 /* =========================================
-   Mobile
+   Desktop enhancements
    ========================================= */
 
-@media (max-width: 768px) {
+@media (min-width: 769px) {
 
   .burger {
-    display: block;
-  }
-
-  .main-nav {
     display: none;
   }
 
   .hero {
-    padding: 120px 0 140px;
+    padding: 160px 0 180px;
+  }
+
+  .hero-actions {
+    flex-direction: row;
+    gap: 18px;
   }
 
   .section {
-    padding: 90px 0 110px;
+    padding: 120px 0 140px;
+  }
+
+  .products-grid {
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 32px;
+    margin-top: 56px;
+  }
+
+  .product-card {
+    background:
+      linear-gradient(
+        180deg,
+        rgba(26, 92, 82, 0.85),
+        rgba(10, 34, 30, 0.95)
+      );
+    transition:
+      transform 0.35s ease,
+      box-shadow 0.35s ease;
+  }
+
+  .product-card:hover {
+    transform: translateY(-10px);
+    box-shadow:
+      0 36px 80px rgba(0, 0, 0, 0.65),
+      0 0 0 1px var(--accent-glow);
   }
 }
