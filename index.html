@@ -152,58 +152,8 @@
   </div>
 </section>
 
-<script>
-const burger = document.getElementById('burgerBtn');
-const menu = document.getElementById('mobileMenu');
-const overlay = document.querySelector('.menu-overlay');
-const closeBtn = document.getElementById('menuClose');
-const links = document.querySelectorAll('.mobile-nav a');
-
-let lastActiveElement = null;
-
-function openMenu(){
-  lastActiveElement = document.activeElement;
-
-  menu.classList.add('active');
-  overlay.classList.add('active');
-  overlay.setAttribute('aria-hidden', 'false');
-
-  burger.setAttribute('aria-expanded', 'true');
-
-  document.body.style.overflow = 'hidden';
-
-  // Фокус на кнопку закрытия (нормальная доступность)
-  closeBtn.focus();
-}
-
-function closeMenu(){
-  menu.classList.remove('active');
-  overlay.classList.remove('active');
-  overlay.setAttribute('aria-hidden', 'true');
-
-  burger.setAttribute('aria-expanded', 'false');
-
-  document.body.style.overflow = '';
-
-  // Возвращаем фокус туда, откуда открывали
-  if (lastActiveElement && typeof lastActiveElement.focus === 'function'){
-    lastActiveElement.focus();
-  } else {
-    burger.focus();
-  }
-}
-
-burger.addEventListener('click', openMenu);
-overlay.addEventListener('click', closeMenu);
-closeBtn.addEventListener('click', closeMenu);
-links.forEach(link => link.addEventListener('click', closeMenu));
-
-document.addEventListener('keydown', (e) => {
-  if (e.key === 'Escape' && menu.classList.contains('active')){
-    closeMenu();
-  }
-});
-</script>
+<!-- Single source JS -->
+<script src="assets/js/main.js"></script>
 
 </body>
 </html>
