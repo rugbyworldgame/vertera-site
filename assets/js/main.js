@@ -99,8 +99,16 @@
       closeMenu();
     });
 
-    links.forEach((link) => link.addEventListener('click', closeMenu));
+    // Close on link tap (+ даём браузеру перейти по якорю уже после закрытия)
+    links.forEach((link) => {
+      link.addEventListener('click', (e) => {
+        // если это якорь, закрываем меню и даём переходу случиться
+        // закрытие синхронно, переход по якорю остаётся штатным
+        closeMenu();
+      });
+    });
 
+    // Close on ESC
     document.addEventListener('keydown', (e) => {
       if (e.key === 'Escape') closeMenu();
     });
