@@ -294,32 +294,44 @@ h2{ font-size:1.65rem; }
   margin-bottom:14px;
 }
 
+/* Небольшое “стекло/дымка” поверх фона, чтобы предмет лучше встраивался */
+.product-media::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  background: linear-gradient(to bottom, rgba(0,0,0,.06), rgba(0,0,0,.16));
+  opacity:.85;
+  pointer-events:none;
+}
+
+/* Предмет: крупнее, ниже, с более естественной тенью */
 .product-media img{
   position:absolute;
   inset:0;
   width:100%;
   height:100%;
   object-fit:contain;
-  padding:14px;
-  transform: translateY(4px) scale(1.06);
+  padding:12px; /* чуть больше предмет */
+  transform: translateY(6px) scale(1.16); /* ключ: не “висит”, а стоит */
   filter:
-    drop-shadow(0 18px 28px rgba(0,0,0,.42))
-    contrast(1.06)
-    saturate(1.04);
+    drop-shadow(0 22px 34px rgba(0,0,0,.52))
+    contrast(1.08)
+    saturate(1.05);
   display:block;
 }
 
+/* Подиум под предметом (сильнее и ниже) */
 .product-media::before{
   content:"";
   position:absolute;
   left:50%;
-  bottom:16px;
+  bottom:12px;
   width:62%;
-  height:18px;
+  height:20px;
   transform: translateX(-50%);
-  background: radial-gradient(closest-side, rgba(0,0,0,.45), transparent 70%);
-  filter: blur(1px);
-  opacity:.75;
+  background: radial-gradient(closest-side, rgba(0,0,0,.52), transparent 72%);
+  filter: blur(2px);
+  opacity:.78;
   pointer-events:none;
 }
 
@@ -408,4 +420,9 @@ h2{ font-size:1.65rem; }
   .section{ padding:56px 0 72px; }
   .product-media{ height:140px; }
   .product-card{ min-height:280px; }
+
+  /* на мобиле чуть меньше масштаб, чтобы не упиралось */
+  .product-media img{
+    transform: translateY(6px) scale(1.12);
+  }
 }
