@@ -11,7 +11,7 @@
 
   /* Text */
   --text-main:#e6f1ee;
-  --text-secondary:#b6d8d1; /* выровнено со style.css */
+  --text-secondary:#b6d8d1;
   --text-muted:#7f9e97;
 
   /* Accent */
@@ -19,9 +19,10 @@
   --accent-hover:#2a8f82;
 
   /* Borders */
-  --border-soft:rgba(255,255,255,.12);   /* выровнено со style.css */
+  --border-soft:rgba(255,255,255,.12);
   --border-softer:rgba(255,255,255,.08);
 
   /* Shadows */
   --shadow-soft:0 14px 40px rgba(0,0,0,.40);
 }
+
