@@ -4,117 +4,11 @@
   <meta charset="utf-8">
   <title>Vertera</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Theme tokens first -->
+  <link rel="stylesheet" href="assets/css/theme.css">
+  <!-- Main styles -->
   <link rel="stylesheet" href="assets/css/style.css">
-
-  <!-- PREMIUM PATCH v1 (временно в index.html, позже вынесем в отдельный файл) -->
-  <style>
-    /* Нормализуем ритм и визуальную “дороговизну” карточек */
-    .products-grid{
-      gap:22px;
-    }
-
-    .product-card{
-      position:relative;
-      display:flex;
-      flex-direction:column;
-      min-height: 290px;
-      overflow:hidden;
-    }
-
-    /* Верхнее “окно” под картинку или фирменную абстракцию */
-    .product-media{
-      height:150px;
-      border-radius:18px;
-      border:1px solid rgba(255,255,255,.10);
-      background:
-        radial-gradient(220px 140px at 20% 25%, rgba(42,143,130,.35), transparent 60%),
-        radial-gradient(220px 140px at 80% 75%, rgba(255,255,255,.10), transparent 62%),
-        linear-gradient(135deg, rgba(14,56,50,.88), rgba(9,28,26,.92));
-      box-shadow: 0 18px 45px rgba(0,0,0,.28);
-      position:relative;
-      overflow:hidden;
-      margin-bottom:14px;
-    }
-
-    .product-media img{
-      position:absolute;
-      inset:0;
-      width:100%;
-      height:100%;
-      object-fit:contain;
-      padding:18px;
-      filter: drop-shadow(0 18px 28px rgba(0,0,0,.42));
-      display:block;
-    }
-
-    /* Если изображения нет, окно остаётся “премиально пустым” */
-    .product-media.is-empty::after{
-      content:"";
-      position:absolute;
-      inset:0;
-      background:
-        radial-gradient(140px 120px at 65% 35%, rgba(255,255,255,.08), transparent 60%),
-        radial-gradient(180px 140px at 30% 80%, rgba(42,143,130,.18), transparent 62%);
-      opacity:.9;
-      pointer-events:none;
-    }
-
-    .product-card h3{
-      margin:0 0 8px;
-      line-height:1.2;
-      letter-spacing:.01em;
-    }
-
-    .product-card p{
-      margin:0;
-      color: rgba(223,232,255,.62);
-      line-height:1.45;
-    }
-
-    .product-actions{
-      margin-top:auto;
-      padding-top:14px;
-      display:flex;
-      gap:10px;
-      align-items:center;
-    }
-
-    .btn-mini{
-      display:inline-flex;
-      align-items:center;
-      justify-content:center;
-      padding:10px 14px;
-      border-radius:14px;
-      border:1px solid rgba(255,255,255,.12);
-      background:rgba(255,255,255,.06);
-      color:rgba(230,236,255,.92);
-      text-decoration:none;
-      transition: transform .18s ease, background .18s ease, border-color .18s ease;
-      white-space:nowrap;
-      font-size:14px;
-    }
-
-    .btn-mini:hover{
-      transform: translateY(-2px);
-      background:rgba(255,255,255,.10);
-      border-color: rgba(42,143,130,.45);
-    }
-
-    .badge{
-      font-size:12px;
-      padding:6px 10px;
-      border-radius:999px;
-      border:1px solid rgba(255,255,255,.10);
-      background:rgba(255,255,255,.04);
-      color:rgba(223,232,255,.70);
-    }
-
-    /* Мелкий фикс: на очень узких экранах */
-    @media (max-width: 420px){
-      .product-card{ min-height: 280px; }
-      .product-media{ height: 140px; }
-    }
-  </style>
 </head>
 
 <body>
@@ -124,22 +18,22 @@
     <div class="header-inner">
       <div class="brand">VERTERA</div>
 
-      <nav class="main-nav">
+      <nav class="main-nav" aria-label="Основная навигация">
         <a href="#products">Продукты</a>
         <a href="#how">Как купить</a>
         <a href="#contacts">Контакты</a>
       </nav>
 
-      <button class="burger" id="burgerBtn" aria-label="Меню">
+      <button class="burger" id="burgerBtn" aria-label="Открыть меню" aria-expanded="false" aria-controls="mobileMenu">
         <span></span><span></span><span></span>
       </button>
     </div>
   </div>
 </header>
 
-<div class="menu-overlay"></div>
+<div class="menu-overlay" aria-hidden="true"></div>
 
-<aside class="mobile-menu" id="mobileMenu">
+<aside class="mobile-menu" id="mobileMenu" aria-label="Мобильное меню">
   <button class="menu-close" id="menuClose" aria-label="Закрыть меню">✕</button>
   <nav class="mobile-nav">
     <a href="#products">Продукты</a>
@@ -265,22 +159,50 @@ const overlay = document.querySelector('.menu-overlay');
 const closeBtn = document.getElementById('menuClose');
 const links = document.querySelectorAll('.mobile-nav a');
 
+let lastActiveElement = null;
+
 function openMenu(){
+  lastActiveElement = document.activeElement;
+
   menu.classList.add('active');
   overlay.classList.add('active');
+  overlay.setAttribute('aria-hidden', 'false');
+
+  burger.setAttribute('aria-expanded', 'true');
+
   document.body.style.overflow = 'hidden';
+
+  // Фокус на кнопку закрытия (нормальная доступность)
+  closeBtn.focus();
 }
 
 function closeMenu(){
   menu.classList.remove('active');
   overlay.classList.remove('active');
+  overlay.setAttribute('aria-hidden', 'true');
+
+  burger.setAttribute('aria-expanded', 'false');
+
   document.body.style.overflow = '';
+
+  // Возвращаем фокус туда, откуда открывали
+  if (lastActiveElement && typeof lastActiveElement.focus === 'function'){
+    lastActiveElement.focus();
+  } else {
+    burger.focus();
+  }
 }
 
 burger.addEventListener('click', openMenu);
 overlay.addEventListener('click', closeMenu);
 closeBtn.addEventListener('click', closeMenu);
 links.forEach(link => link.addEventListener('click', closeMenu));
+
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape' && menu.classList.contains('active')){
+    closeMenu();
+  }
+});
 </script>
 
 </body>
