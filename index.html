@@ -5,6 +5,21 @@
   <title>Vertera</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="assets/css/style.css">
+
+  <!-- ✅ ДОБАВЛЕНО: поддержка картинок в “окне” карточки без правки style.css -->
+  <style>
+    /* По умолчанию изображения нет (окно остаётся “пустым/водяным”) */
+    .product-card{ --img: none; }
+
+    /* Встраиваем картинку внутрь существующего “окна” (product-card::before) */
+    .product-card::before{
+      background:
+        radial-gradient(circle at 22% 20%, rgba(42,143,130,.32), transparent 62%),
+        radial-gradient(circle at 80% 35%, rgba(255,255,255,.10), transparent 64%),
+        linear-gradient(135deg, rgba(14,56,50,.88), rgba(9,28,26,.92)),
+        var(--img) center / contain no-repeat;
+    }
+  </style>
 </head>
 <body>
 
@@ -55,13 +70,13 @@
 
     <div class="products-grid">
 
-      <!-- 1 -->
-      <article class="product-card">
+      <!-- 1 (пример с реальным файлом; поменяй имя под твоё) -->
+      <article class="product-card" style="--img:url('assets/img/angio-live.png')">
         <h3>Гель для пищеварения</h3>
         <p>Мягкое ежедневное использование.</p>
       </article>
 
-      <!-- 2 -->
+      <!-- 2 (пока без картинки — окно останется “премиально пустым”) -->
       <article class="product-card">
         <h3>Детокс-комплекс</h3>
         <p>На основе морских компонентов.</p>
@@ -92,6 +107,21 @@
       </article>
 
     </div>
+  </div>
+</section>
+
+<!-- (необязательно, но чтобы якоря #how и #contacts не вели “в никуда”) -->
+<section id="how" class="section">
+  <div class="container">
+    <h2>Как купить</h2>
+    <p>Раздел в разработке.</p>
+  </div>
+</section>
+
+<section id="contacts" class="section">
+  <div class="container">
+    <h2>Контакты</h2>
+    <p>Раздел в разработке.</p>
   </div>
 </section>
 
