@@ -279,7 +279,7 @@ h2{ font-size:1.65rem; }
 
   /* по умолчанию крупнее (было 74%) */
   background-size:
-    var(--imgSize, 86%) auto,
+    var(--imgSize, 76%) auto,
     cover,
     cover,
     cover;
