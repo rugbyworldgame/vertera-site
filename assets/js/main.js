@@ -26,8 +26,18 @@
     document.documentElement.style.overflowX = 'hidden';
     document.body.style.overflowX = 'hidden';
 
+    // ширина скроллбара (для компенсации "прыжка" на десктопе)
+    const getScrollbarWidth = () => {
+      const w = window.innerWidth - document.documentElement.clientWidth;
+      return w > 0 ? w : 0;
+    };
+
     const lockScroll = () => {
       scrollY = window.scrollY || 0;
+
+      // компенсируем исчезновение скроллбара (десктоп)
+      const sbw = getScrollbarWidth();
+      if (sbw) document.body.style.paddingRight = `${sbw}px`;
 
       // фиксируем body, чтобы не прыгал фон и не было iOS-багов
       document.body.style.position = 'fixed';
@@ -43,6 +53,8 @@
       document.body.style.left = '';
       document.body.style.right = '';
       document.body.style.width = '';
+      document.body.style.paddingRight = '';
+
       window.scrollTo(0, scrollY);
     };
 
@@ -59,7 +71,11 @@
       overlay.setAttribute('aria-hidden', 'false');
 
       lockScroll();
-      closeBtn.focus();
+
+      // Фокус ставим только на устройствах с клавиатурой (чтобы на мобиле не было вспышек)
+      if (window.matchMedia && window.matchMedia('(hover:hover) and (pointer:fine)').matches) {
+        closeBtn.focus();
+      }
     };
 
     const closeMenu = () => {
@@ -74,10 +90,13 @@
 
       unlockScroll();
 
-      if (lastActiveElement && typeof lastActiveElement.focus === 'function') {
-        lastActiveElement.focus();
-      } else {
-        burger.focus();
+      // Возврат фокуса — только для клавиатуры/десктопа
+      if (window.matchMedia && window.matchMedia('(hover:hover) and (pointer:fine)').matches) {
+        if (lastActiveElement && typeof lastActiveElement.focus === 'function') {
+          lastActiveElement.focus();
+        } else {
+          burger.focus();
+        }
       }
     };
 
@@ -99,13 +118,9 @@
       closeMenu();
     });
 
-    // Close on link tap (+ даём браузеру перейти по якорю уже после закрытия)
+    // Close on link tap
     links.forEach((link) => {
-      link.addEventListener('click', (e) => {
-        // если это якорь, закрываем меню и даём переходу случиться
-        // закрытие синхронно, переход по якорю остаётся штатным
-        closeMenu();
-      });
+      link.addEventListener('click', () => closeMenu());
     });
 
     // Close on ESC
