@@ -103,6 +103,9 @@ h2{ font-size:1.65rem; }
   background:none;
   border:none;
   cursor:pointer;
+
+  -webkit-appearance:none;
+  appearance:none;
 }
 
 .burger span{
@@ -117,6 +120,26 @@ h2{ font-size:1.65rem; }
 .burger span:nth-child(1){ top:3px; }
 .burger span:nth-child(2){ top:12px; }
 .burger span:nth-child(3){ bottom:3px; }
+
+/* ---------- Tap/Focus fix (убираем вспышку на мобильных) ---------- */
+.burger,
+.menu-close{
+  -webkit-tap-highlight-color:transparent;
+  tap-highlight-color:transparent;
+}
+
+.burger:focus,
+.menu-close:focus{
+  outline:none;
+}
+
+/* аккуратный фокус только для клавиатуры */
+.burger:focus-visible,
+.menu-close:focus-visible{
+  outline:2px solid rgba(42,143,130,.45);
+  outline-offset:3px;
+  border-radius:999px;
+}
 
 /* =========================================
    Overlay + Mobile menu
