@@ -1,1 +1,338 @@
-tmp
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <title>Angio Live Original — Vertera</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <meta name="description" content="Angio Live Original — спокойная и структурированная страница о продукте Vertera: что это, кому может подойти, как перейти на официальный сайт.">
+
+  <!-- Theme tokens first -->
+  <link rel="stylesheet" href="../assets/css/theme.css">
+  <!-- Main styles -->
+  <link rel="stylesheet" href="../assets/css/style.css">
+
+  <!-- Minimal page-local tweaks (safe) -->
+  <style>
+    .breadcrumbs{
+      font-size:14px;
+      color:rgba(230,241,238,.70);
+      margin:14px 0 18px;
+    }
+    .breadcrumbs a{
+      color:rgba(230,241,238,.85);
+      text-decoration:none;
+      border-bottom:1px solid rgba(255,255,255,.12);
+    }
+    .breadcrumbs a:hover{
+      border-bottom-color: rgba(42,143,130,.45);
+    }
+
+    .product-hero{
+      padding:34px 0 28px;
+    }
+
+    .product-hero-grid{
+      display:grid;
+      grid-template-columns: 1.1fr .9fr;
+      gap:24px;
+      align-items:stretch;
+      margin-top:16px;
+    }
+
+    .product-panel{
+      border-radius:26px;
+      padding:22px 22px 24px;
+      background:
+        linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.02)),
+        linear-gradient(to bottom, rgba(16,43,38,.85), rgba(11,31,28,.95));
+      border:1px solid rgba(255,255,255,.12);
+      box-shadow:0 26px 70px rgba(0,0,0,.55);
+      backdrop-filter:blur(14px);
+      overflow:hidden;
+      position:relative;
+    }
+
+    .product-panel::after{
+      content:"";
+      position:absolute;
+      inset:0;
+      border-radius:26px;
+      background:
+        radial-gradient(circle at 18% 0%, rgba(255,255,255,.10), transparent 55%),
+        radial-gradient(circle at 75% 20%, rgba(42,143,130,.12), transparent 60%);
+      opacity:.85;
+      pointer-events:none;
+    }
+
+    .product-panel > *{ position:relative; z-index:1; }
+
+    .product-title{
+      margin:0 0 10px;
+      line-height:1.15;
+      letter-spacing:-.01em;
+    }
+    .product-sub{
+      margin:0 0 18px;
+      color:rgba(230,241,238,.78);
+      max-width:54ch;
+    }
+
+    .product-cta{
+      display:flex;
+      gap:12px;
+      flex-wrap:wrap;
+      margin-top:18px;
+    }
+
+    .note{
+      margin-top:10px;
+      font-size:12.5px;
+      color:rgba(230,241,238,.62);
+      line-height:1.45;
+    }
+
+    .product-media-lg{
+      min-height:320px;
+      border-radius:26px;
+      border:1px solid rgba(255,255,255,.10);
+      background:
+        radial-gradient(320px 200px at 18% 18%, rgba(42,143,130,.32), transparent 60%),
+        radial-gradient(360px 240px at 82% 80%, rgba(255,255,255,.10), transparent 62%),
+        linear-gradient(135deg, rgba(14,56,50,.88), rgba(9,28,26,.92));
+      box-shadow: 0 22px 60px rgba(0,0,0,.35);
+      position:relative;
+      overflow:hidden;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      padding:20px;
+    }
+
+    .product-media-lg::after{
+      content:"";
+      position:absolute;
+      inset:0;
+      background: linear-gradient(to bottom, rgba(0,0,0,.04), rgba(0,0,0,.18));
+      opacity:.85;
+      pointer-events:none;
+    }
+
+    .product-media-lg::before{
+      content:"";
+      position:absolute;
+      left:50%;
+      bottom:26px;
+      width:58%;
+      height:22px;
+      transform: translateX(-50%);
+      background: radial-gradient(closest-side, rgba(0,0,0,.48), transparent 72%);
+      filter: blur(2px);
+      opacity:.75;
+      pointer-events:none;
+    }
+
+    .product-media-lg img{
+      position:relative;
+      z-index:1;
+      width:min(92%, 420px);
+      height:auto;
+      display:block;
+      transform: translateY(10px);
+      filter:
+        drop-shadow(0 26px 40px rgba(0,0,0,.52))
+        contrast(1.06)
+        saturate(1.04);
+    }
+
+    .blocks{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap:22px;
+      margin-top:22px;
+    }
+
+    .block{
+      border-radius:22px;
+      padding:18px 18px 18px;
+      background: rgba(255,255,255,.05);
+      border:1px solid rgba(255,255,255,.10);
+    }
+    .block h3{
+      margin:0 0 10px;
+      font-size:1.05rem;
+    }
+    .block ul{
+      margin:0;
+      padding-left:18px;
+      color:rgba(230,241,238,.74);
+    }
+    .block li{ margin:6px 0; }
+
+    .divider{
+      height:1px;
+      background: rgba(255,255,255,.08);
+      margin:18px 0;
+    }
+
+    .footer-cta{
+      margin-top:22px;
+      display:flex;
+      gap:12px;
+      flex-wrap:wrap;
+      align-items:center;
+    }
+
+    .back-link{
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+      margin-top:18px;
+      color:rgba(230,241,238,.82);
+    }
+    .back-link span{
+      display:inline-flex;
+      width:34px;
+      height:34px;
+      border-radius:999px;
+      align-items:center;
+      justify-content:center;
+      border:1px solid rgba(255,255,255,.12);
+      background: rgba(255,255,255,.06);
+    }
+
+    @media (max-width: 860px){
+      .product-hero-grid{ grid-template-columns: 1fr; }
+      .blocks{ grid-template-columns: 1fr; }
+      .product-media-lg{ min-height:280px; }
+    }
+  </style>
+</head>
+
+<body>
+
+<header class="site-header">
+  <div class="container">
+    <div class="header-inner">
+      <div class="brand">VERTERA</div>
+
+      <nav class="main-nav" aria-label="Основная навигация">
+        <a href="../index.html#products">Продукты</a>
+        <a href="../index.html#how">Как купить</a>
+        <a href="../index.html#contacts">Контакты</a>
+      </nav>
+
+      <button class="burger" id="burgerBtn" aria-label="Открыть меню" aria-expanded="false" aria-controls="mobileMenu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<div class="menu-overlay" aria-hidden="true"></div>
+
+<aside class="mobile-menu" id="mobileMenu" aria-label="Мобильное меню">
+  <button class="menu-close" id="menuClose" aria-label="Закрыть меню">✕</button>
+  <nav class="mobile-nav">
+    <a href="../index.html#products">Продукты</a>
+    <a href="../index.html#how">Как купить</a>
+    <a href="../index.html#contacts">Контакты</a>
+  </nav>
+</aside>
+
+<section class="section product-hero">
+  <div class="container">
+
+    <div class="breadcrumbs">
+      <a href="../index.html#products">Продукты</a> <span aria-hidden="true">/</span> Angio Live Original
+    </div>
+
+    <div class="product-hero-grid">
+      <!-- Left -->
+      <div class="product-panel">
+        <h1 class="product-title">Гель Angio Live Original</h1>
+        <p class="product-sub">
+          Спокойная страница о продукте: что это такое, кому может быть полезен и как перейти на официальный сайт.
+        </p>
+
+        <div class="divider"></div>
+
+        <div class="blocks">
+          <div class="block">
+            <h3>Что это</h3>
+            <ul>
+              <li>Продукт Vertera на основе морских компонентов.</li>
+              <li>Фокус — поддержка сосудистого здоровья и эндотелия.</li>
+              <li>Не является лекарственным средством.</li>
+            </ul>
+          </div>
+
+          <div class="block">
+            <h3>Кому может подойти</h3>
+            <ul>
+              <li>Тем, кто заботится о здоровье сосудов.</li>
+              <li>При высокой умственной нагрузке и стрессе.</li>
+              <li>В рамках поддерживающего образа жизни.</li>
+            </ul>
+          </div>
+
+          <div class="block">
+            <h3>Как использовать</h3>
+            <ul>
+              <li>Способ применения указан производителем.</li>
+              <li>Перед применением ознакомьтесь с инструкцией на официальном сайте.</li>
+            </ul>
+          </div>
+
+          <div class="block">
+            <h3>Важно знать</h3>
+            <ul>
+              <li>Возможны индивидуальные реакции.</li>
+              <li>Информация носит ознакомительный характер.</li>
+              <li>При вопросах по здоровью лучше обсудить со специалистом.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="divider"></div>
+
+        <div class="footer-cta">
+          <!-- TODO: вставишь свою партнёрскую ссылку -->
+          <a class="btn btn-primary" href="#" target="_blank" rel="noopener">
+            Перейти на официальный сайт
+          </a>
+          <a class="btn btn-secondary" href="../index.html#contacts">
+            Связаться со мной
+          </a>
+        </div>
+
+        <p class="note">
+          Переход ведёт на официальный сайт производителя. Ссылка может содержать мой партнёрский идентификатор.
+        </p>
+
+        <a class="back-link" href="../index.html#products">
+          <span aria-hidden="true">←</span> Назад к списку продуктов
+        </a>
+      </div>
+
+      <!-- Right -->
+      <div class="product-media-lg" aria-label="Изображение продукта">
+        <img
+          src="../assets/img/AngioLiveOriginal.png"
+          alt="Гель Angio Live Original"
+          loading="lazy"
+          width="900"
+          height="900"
+        >
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- Single source JS (same menu logic) -->
+<script src="../assets/js/main.js"></script>
+
+</body>
+</html>
+
