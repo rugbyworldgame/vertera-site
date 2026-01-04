@@ -22,11 +22,11 @@
     let scrollY = 0;
     let lastActiveElement = null;
 
-    // страховка от горизонтального "уезда"
+    // страховка от горизонтального "уезда" (без вмешательства в touchmove)
     document.documentElement.style.overflowX = 'hidden';
     document.body.style.overflowX = 'hidden';
 
-    // ширина скроллбара (для компенсации "прыжка" на десктопе)
+    // ширина скроллбара (компенсация "прыжка" на десктопе)
     const getScrollbarWidth = () => {
       const w = window.innerWidth - document.documentElement.clientWidth;
       return w > 0 ? w : 0;
@@ -72,7 +72,7 @@
 
       lockScroll();
 
-      // Фокус ставим только на устройствах с клавиатурой (чтобы на мобиле не было вспышек)
+      // фокус только для устройств с "мышь/клава" (на мобиле не трогаем)
       if (window.matchMedia && window.matchMedia('(hover:hover) and (pointer:fine)').matches) {
         closeBtn.focus();
       }
@@ -90,7 +90,7 @@
 
       unlockScroll();
 
-      // Возврат фокуса — только для клавиатуры/десктопа
+      // возврат фокуса — только для клавиатуры/десктопа
       if (window.matchMedia && window.matchMedia('(hover:hover) and (pointer:fine)').matches) {
         if (lastActiveElement && typeof lastActiveElement.focus === 'function') {
           lastActiveElement.focus();
@@ -118,17 +118,12 @@
       closeMenu();
     });
 
-    // Close on link tap
-    links.forEach((link) => {
-      link.addEventListener('click', () => closeMenu());
-    });
+    links.forEach((link) => link.addEventListener('click', () => closeMenu()));
 
-    // Close on ESC
     document.addEventListener('keydown', (e) => {
       if (e.key === 'Escape') closeMenu();
     });
 
-    // Close on outside click (extra safety)
     document.addEventListener('click', (e) => {
       if (!isOpen) return;
       const t = e.target;
@@ -138,31 +133,8 @@
       closeMenu();
     });
 
-    // Resize safety
     window.addEventListener('resize', () => {
       if (window.innerWidth > 768) closeMenu();
     }, { passive: true });
-
-    // Prevent overscroll-x "swipe ghost"
-    // Не блокируем вертикальную прокрутку. Только гасим горизонтальный сдвиг страницы.
-    let startX = 0;
-    let startY = 0;
-
-    document.addEventListener('touchstart', (e) => {
-      if (!e.touches || !e.touches[0]) return;
-      startX = e.touches[0].clientX;
-      startY = e.touches[0].clientY;
-    }, { passive: true });
-
-    document.addEventListener('touchmove', (e) => {
-      if (!e.touches || !e.touches[0]) return;
-
-      const dx = e.touches[0].clientX - startX;
-      const dy = e.touches[0].clientY - startY;
-
-      if (Math.abs(dx) > Math.abs(dy) && Math.abs(dx) > 12) {
-        e.preventDefault();
-      }
-    }, { passive: false });
   });
 })();
