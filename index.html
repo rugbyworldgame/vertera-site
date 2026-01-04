@@ -17,52 +17,44 @@
     section[id]{ scroll-margin-top: 76px; }
 
     /* =========================================
-       PRODUCT IMAGE FIT — "как на 2-м фото"
-       Цель: банка НЕ под туманом/стеклом,
-       а поверх, с тенью и мягким свечением.
-       (Без правок CSS-файлов — только патч тут)
+       PRODUCT IMAGE FIT — minimal safe effect
+       Цель: единообразно, аккуратно, без ломки.
        ========================================= */
 
-    /* контейнер картинки: отдельная "сцена" */
     .products-grid .product-media.has-product{
       position: relative;
-      isolation: isolate; /* гарантирует слои */
-      overflow: visible;  /* чтобы свечение не обрезалось */
+      isolation: isolate;
+      overflow: visible;
     }
 
-    /* мягкое свечение позади банки (НЕ на банке) */
+    /* мягкое свечение позади банки (очень аккуратно) */
     .products-grid .product-media.has-product::before{
       content:"";
       position:absolute;
       left:50%;
-      top:55%;
-      width: 78%;
-      height: 78%;
+      top:56%;
+      width: 74%;
+      height: 74%;
       transform: translate(-50%, -50%);
       z-index: 1;
 
       background: radial-gradient(circle at 45% 55%,
-        rgba(120,255,235,.18),
-        rgba(120,255,235,.08) 42%,
-        rgba(120,255,235,.03) 62%,
-        transparent 72%);
-      filter: blur(10px);
+        rgba(120,255,235,.12),
+        rgba(120,255,235,.05) 44%,
+        rgba(120,255,235,.02) 64%,
+        transparent 74%);
+      filter: blur(11px);
       pointer-events:none;
     }
 
-    /* сама банка — всегда выше стекла/оверлеев */
     .products-grid .product-media.has-product img{
       position: relative;
       z-index: 2;
-
-      /* запрещаем "туман" на банке, если где-то применён */
       opacity: 1 !important;
       transform: translateZ(0);
-
-      /* главный эффект: тень + лёгкий "подводный" подсвет */
       filter:
         drop-shadow(0 18px 40px rgba(0,0,0,.55))
-        drop-shadow(0 0 22px rgba(120,255,235,.14))
+        drop-shadow(0 0 18px rgba(120,255,235,.10))
         !important;
     }
   </style>
@@ -138,7 +130,7 @@
 
         <div class="product-actions">
           <span class="badge">Топ продукт</span>
-          <a class="btn-mini" href="#">Подробнее</a>
+          <a class="btn-mini" href="products/angio-live.html">Подробнее</a>
         </div>
       </article>
 
