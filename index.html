@@ -7,8 +7,15 @@
 
   <meta name="description" content="Структурированная информация о продуктах Vertera. Морские водоросли, здоровье и долголетие.">
 
-  <!-- (опционально) убирает 404 по favicon, когда добавишь файл -->
+  <!-- favicon добавим позже, когда появится файл
   <link rel="icon" href="assets/img/favicon.png" type="image/png">
+  -->
+
+  <!-- ✅ FIX: якоря не залезают под фикс-шапку -->
+  <style>
+    html{ scroll-padding-top: 76px; }
+    section[id]{ scroll-margin-top: 76px; }
+  </style>
 
   <!-- Theme tokens first -->
   <link rel="stylesheet" href="assets/css/theme.css">
