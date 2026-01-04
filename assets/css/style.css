@@ -326,12 +326,13 @@ h2{ font-size:1.65rem; }
 }
 
 /* Небольшое “стекло/дымка” поверх фона, чтобы предмет лучше встраивался */
+/* TUNE: ослабили, чтобы банка читалась чище и не уходила в "туман" */
 .product-media::after{
   content:"";
   position:absolute;
   inset:0;
-  background: linear-gradient(to bottom, rgba(0,0,0,.06), rgba(0,0,0,.16));
-  opacity:.85;
+  background: linear-gradient(to bottom, rgba(0,0,0,.04), rgba(0,0,0,.12)); /* TUNE */
+  opacity:.55; /* TUNE: было .85 */
   pointer-events:none;
 }
 
@@ -352,6 +353,7 @@ h2{ font-size:1.65rem; }
 }
 
 /* Подиум под предметом (сильнее и ниже) */
+/* TUNE: едва ослабили, чтобы не утяжелять картинку */
 .product-media::before{
   content:"";
   position:absolute;
@@ -362,7 +364,7 @@ h2{ font-size:1.65rem; }
   transform: translateX(-50%);
   background: radial-gradient(closest-side, rgba(0,0,0,.52), transparent 72%);
   filter: blur(2px);
-  opacity:.78;
+  opacity:.68; /* TUNE: было .78 */
   pointer-events:none;
 }
 
